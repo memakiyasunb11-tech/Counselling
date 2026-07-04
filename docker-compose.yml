@@ -1,11 +1,9 @@
-version: '3.8'
-
 services:
-  EduFordge-client:
+  eduforge-client:
     build: 
       context: ./client
       dockerfile: Dockerfile
-    container_name: EduFordge-client
+    container_name: eduforge-client
     ports:
       - "80:80"
     restart: always
