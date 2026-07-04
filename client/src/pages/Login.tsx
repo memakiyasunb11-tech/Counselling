@@ -2,10 +2,87 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { LogIn } from 'lucide-react';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { auth, db } from '../firebase';
 
 const Login: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [status, setStatus] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('Authenticating...');
+    setError('');
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Fetch user profile from Firestore
+      const userDocRef = doc(db, 'users', user.uid);
+      const userDoc = await getDoc(userDocRef);
+
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        const role = userData.role;
+
+        setStatus('Login successful!');
+        if (role === 'admin') navigate('/admin/dashboard');
+        else if (role === 'counsellor') navigate('/counsellor/dashboard');
+        else navigate('/student/dashboard');
+      } else {
+        throw new Error('User profile not found in database.');
+      }
+    } catch (err: any) {
+      console.error(err);
+      setStatus('');
+      setError(err.message || 'Failed to login.');
+    }
+  };
+
+  const handleDemoLogin = async (role: 'student' | 'counsellor' | 'admin') => {
+    setStatus(`Authenticating demo ${role}...`);
+    setError('');
+    
+    const demoEmail = `${role}@demo.com`;
+    const demoPassword = 'password123';
+
+    try {
+      // Try logging in first
+      try {
+        await signInWithEmailAndPassword(auth, demoEmail, demoPassword);
+      } catch (err: any) {
+        // If the user doesn't exist, create it on the fly
+        if (err.code === 'auth/user-not-found' || err.code === 'auth/invalid-credential' || err.code === 'auth/invalid-login-credentials') {
+           const creds = await createUserWithEmailAndPassword(auth, demoEmail, demoPassword);
+           await setDoc(doc(db, 'users', creds.user.uid), {
+             uid: creds.user.uid,
+             firstName: 'Demo',
+             lastName: role,
+             email: demoEmail,
+             role: role,
+             createdAt: new Date().toISOString()
+           });
+        } else {
+           throw err;
+        }
+      }
+
+      setStatus('Login successful!');
+      if (role === 'admin') navigate('/admin/dashboard');
+      else if (role === 'counsellor') navigate('/counsellor/dashboard');
+      else navigate('/student/dashboard');
+      
+    } catch (err: any) {
+      console.error(err);
+      setStatus('');
+      setError('Demo login failed: ' + err.message);
+    }
+  };
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 font-sans">
@@ -31,12 +108,15 @@ const Login: React.FC = () => {
           </p>
         </div>
         
-        <form className="mt-8 space-y-6 relative z-10" onSubmit={e => e.preventDefault()}>
+        <form className="mt-8 space-y-6 relative z-10" onSubmit={handleLogin}>
           <div className="space-y-5">
             <div>
               <label className="block text-sm font-bold text-slate-700 mb-2">Email address</label>
               <input
                 type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="e.g., yourname@email.com"
                 className="appearance-none relative block w-full px-4 py-3 border border-slate-200 bg-slate-50 placeholder-slate-400 text-slate-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 focus:bg-white transition-all font-medium"
               />
@@ -45,10 +125,22 @@ const Login: React.FC = () => {
               <label className="block text-sm font-bold text-slate-700 mb-2">Password</label>
               <input
                 type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 className="appearance-none relative block w-full px-4 py-3 border border-slate-200 bg-slate-50 placeholder-slate-400 text-slate-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 focus:bg-white transition-all font-medium"
               />
             </div>
+          </div>
+
+          <div className="pt-2">
+            <button
+              type="submit"
+              className="group relative w-full flex justify-center py-4 px-4 text-white font-bold rounded-xl bg-amber-500 hover:bg-amber-600 hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 transition-all focus:outline-none"
+            >
+              Sign In
+            </button>
           </div>
         </form>
 
@@ -57,16 +149,13 @@ const Login: React.FC = () => {
             <div className="w-full border-t border-slate-200"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-4 bg-white text-slate-500 font-bold">Or quick login as</span>
+            <span className="px-4 bg-white text-slate-500 font-bold">Or quick login as (Demo only)</span>
           </div>
         </div>
 
         <div className="mt-6 grid grid-cols-3 gap-3 relative z-10">
           <button
-            onClick={() => {
-              setStatus('Logging in as Student...');
-              setTimeout(() => navigate('/student/dashboard'), 800);
-            }}
+            onClick={() => handleDemoLogin('student')}
             className="flex flex-col items-center justify-center p-3 border-2 border-amber-400 bg-amber-50 hover:bg-amber-400 rounded-xl transition-all duration-300 group"
           >
             <span className="text-2xl mb-1">🎓</span>
@@ -74,10 +163,7 @@ const Login: React.FC = () => {
           </button>
 
           <button
-            onClick={() => {
-              setStatus('Logging in as Counsellor...');
-              setTimeout(() => navigate('/counsellor/dashboard'), 800);
-            }}
+            onClick={() => handleDemoLogin('counsellor')}
             className="flex flex-col items-center justify-center p-3 border-2 border-sky-400 bg-sky-50 hover:bg-sky-400 rounded-xl transition-all duration-300 group"
           >
             <span className="text-2xl mb-1">🤝</span>
@@ -85,10 +171,7 @@ const Login: React.FC = () => {
           </button>
 
           <button
-            onClick={() => {
-              setStatus('Logging in as Admin...');
-              setTimeout(() => navigate('/admin/dashboard'), 800);
-            }}
+            onClick={() => handleDemoLogin('admin')}
             className="flex flex-col items-center justify-center p-3 border-2 border-emerald-400 bg-emerald-50 hover:bg-emerald-400 rounded-xl transition-all duration-300 group"
           >
             <span className="text-2xl mb-1">⚙️</span>
@@ -96,7 +179,8 @@ const Login: React.FC = () => {
           </button>
         </div>
         
-        {status && <p className="text-center text-sm font-bold text-slate-500 mt-6 animate-pulse relative z-10">{status}</p>}
+        {status && <p className="text-center text-sm font-bold text-amber-500 mt-6 animate-pulse relative z-10">{status}</p>}
+        {error && <p className="text-center text-sm font-bold text-red-500 mt-6 relative z-10">{error}</p>}
       </motion.div>
     </div>
   );

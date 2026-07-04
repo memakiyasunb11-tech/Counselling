@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  eduforge-client:
+    build: 
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: eduforge-client
+    ports:
+      - "80:80"
+    restart: always
+    environment:
+      - NODE_ENV=production

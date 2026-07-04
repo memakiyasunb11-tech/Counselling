@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserPlus } from 'lucide-react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
+import { auth, db } from '../firebase';
 
 const Register: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +14,7 @@ const Register: React.FC = () => {
     password: '',
   });
   const [status, setStatus] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,18 +24,40 @@ const Register: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('Registering...');
+    setError('');
     
-    // Mock authentication for the frontend demo
-    setTimeout(() => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+      const user = userCredential.user;
+
+      // Dynamically assign role based on email for testing purposes
       const lowerEmail = formData.email.toLowerCase();
+      let userRole = 'student';
       if (lowerEmail.includes('admin')) {
-        navigate('/admin/dashboard');
+        userRole = 'admin';
       } else if (lowerEmail.includes('counsellor')) {
-        navigate('/counsellor/dashboard');
-      } else {
-        navigate('/student/dashboard');
+        userRole = 'counsellor';
       }
-    }, 800);
+
+      // Create a user document in Firestore
+      await setDoc(doc(db, 'users', user.uid), {
+        uid: user.uid,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        role: userRole,
+        createdAt: new Date().toISOString()
+      });
+
+      setStatus('Registration successful!');
+      if (userRole === 'admin') navigate('/admin/dashboard');
+      else if (userRole === 'counsellor') navigate('/counsellor/dashboard');
+      else navigate('/student/dashboard');
+    } catch (err: any) {
+      console.error(err);
+      setStatus('');
+      setError(err.message || 'Failed to register account.');
+    }
   };
 
   return (
@@ -104,7 +130,8 @@ const Register: React.FC = () => {
               Register
             </button>
           </div>
-          {status && <p className="text-center text-sm font-bold text-amber-500">{status}</p>}
+          {status && <p className="text-center text-sm font-bold text-sky-500">{status}</p>}
+          {error && <p className="text-center text-sm font-bold text-red-500">{error}</p>}
         </form>
       </motion.div>
     </div>

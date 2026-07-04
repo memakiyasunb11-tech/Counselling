@@ -62,9 +62,25 @@ const AdminDashboard: React.FC = () => {
       <div className="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl font-bold text-slate-900">Recent CRM Leads</h2>
-          <button className="flex items-center gap-2 bg-emerald-50 text-emerald-600 hover:bg-emerald-100 hover:text-emerald-700 px-5 py-2.5 font-bold rounded-xl transition-colors">
-            <Download size={18} /> Export CSV
-          </button>
+          <div className="flex gap-4">
+            <button 
+              onClick={async () => {
+                const { seedDatabase } = await import('../../utils/seedData');
+                try {
+                  await seedDatabase();
+                  alert('Database seeded successfully!');
+                } catch (e: any) {
+                  alert('Failed to seed: ' + e.message);
+                }
+              }}
+              className="flex items-center gap-2 bg-amber-50 text-amber-600 hover:bg-amber-100 hover:text-amber-700 px-5 py-2.5 font-bold rounded-xl transition-colors"
+            >
+              Seed Database
+            </button>
+            <button className="flex items-center gap-2 bg-emerald-50 text-emerald-600 hover:bg-emerald-100 hover:text-emerald-700 px-5 py-2.5 font-bold rounded-xl transition-colors">
+              <Download size={18} /> Export CSV
+            </button>
+          </div>
         </div>
 
         {loading ? (
