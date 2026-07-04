@@ -8,6 +8,7 @@ import logo from '../../assets/logo.png';
 
 const DashboardLayout: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -120,10 +121,53 @@ const DashboardLayout: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <button className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-colors relative">
-              <Bell size={20} />
-              <span className={`absolute top-1 right-1 w-2 h-2 rounded-full bg-rose-500`}></span>
-            </button>
+            <div className="relative">
+              <button 
+                onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
+                className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-colors relative"
+              >
+                <Bell size={20} />
+                <span className={`absolute top-1 right-1 w-2 h-2 rounded-full bg-rose-500`}></span>
+              </button>
+              
+              {/* Notifications Dropdown */}
+              {isNotificationsOpen && (
+                <div className="absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden z-50">
+                  <div className="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+                    <h3 className="font-bold text-slate-900">Notifications</h3>
+                    <button 
+                      onClick={() => setIsNotificationsOpen(false)}
+                      className="text-xs text-slate-500 hover:text-sky-600 font-medium"
+                    >
+                      Mark all as read
+                    </button>
+                  </div>
+                  <div className="max-h-80 overflow-y-auto">
+                    {[
+                      { title: 'New Message', desc: 'You have a new message from Counsellor.', time: '5m ago', unread: true },
+                      { title: 'System Update', desc: 'EduFordge platform updated successfully.', time: '2h ago', unread: false },
+                      { title: 'Reminder', desc: 'Your scheduled session is tomorrow at 2 PM.', time: '1d ago', unread: false },
+                    ].map((notif, idx) => (
+                      <div key={idx} className={`p-4 border-b border-slate-50 hover:bg-slate-50 cursor-pointer transition-colors ${notif.unread ? 'bg-sky-50/30' : ''}`}>
+                        <div className="flex justify-between items-start mb-1">
+                          <h4 className={`text-sm font-bold ${notif.unread ? 'text-slate-900' : 'text-slate-700'}`}>{notif.title}</h4>
+                          <span className="text-xs text-slate-400">{notif.time}</span>
+                        </div>
+                        <p className="text-xs text-slate-500">{notif.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="p-3 border-t border-slate-100 text-center bg-slate-50">
+                    <button 
+                      onClick={() => setIsNotificationsOpen(false)}
+                      className="text-sm font-bold text-sky-600 hover:text-sky-700"
+                    >
+                      View all notifications
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
             <div className="h-8 w-px bg-slate-200 hidden sm:block"></div>
             <div className="flex items-center gap-3">
               <div className="hidden sm:block text-right">
