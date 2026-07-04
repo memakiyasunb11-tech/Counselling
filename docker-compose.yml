@@ -11,3 +11,16 @@ services:
     restart: always
     environment:
       - NODE_ENV=production
+    depends_on:
+      - eduforge-server
+
+  eduforge-server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: eduforge-server
+    ports:
+      - "5000:5000"
+    restart: always
+    environment:
+      - NODE_ENV=production
