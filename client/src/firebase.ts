@@ -11,8 +11,8 @@ const firebaseConfig = {
   projectId: "recruitmatrix-d8284",
   storageBucket: "recruitmatrix-d8284.firebasestorage.app",
   messagingSenderId: "463226509250",
-  appId: "1:463226509250:web:17a213bb70abce2c8be85b",
-  measurementId: "G-9KEKVE3T64"
+  appId: "1:463226509250:web:eb60f8032d46d96f8be85b",
+  measurementId: "G-40REZK82Z9"
 };
 
 // Initialize Firebase

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar as CalendarIcon, Video } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import BookingModal from '../../components/counseling/BookingModal';
 
 const StudentDashboard: React.FC = () => {
@@ -38,9 +39,9 @@ const StudentDashboard: React.FC = () => {
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Action Required</h3>
                 <p className="text-slate-600 font-medium mb-6">You have pending psychometric assessments to complete before your next counselling session.</p>
-                <button className="bg-white hover:bg-slate-50 text-slate-900 font-bold px-6 py-3 rounded-xl border border-slate-200 shadow-sm transition-all">
+                <Link to="/assessments" className="inline-block bg-white hover:bg-slate-50 text-slate-900 font-bold px-6 py-3 rounded-xl border border-slate-200 shadow-sm transition-all">
                   Take Assessment Now
-                </button>
+                </Link>
               </div>
             </div>
           </motion.div>

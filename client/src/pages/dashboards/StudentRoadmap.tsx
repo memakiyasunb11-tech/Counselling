@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Clock, MapPin, Target } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const milestones = [
   {
@@ -87,9 +88,9 @@ const StudentRoadmap: React.FC = () => {
               
               {milestone.status === 'in-progress' && (
                 <div className="mt-6 pt-6 border-t border-slate-100">
-                  <button className="bg-amber-500 hover:bg-amber-600 text-white font-bold py-2.5 px-6 rounded-xl transition-colors shadow-md shadow-amber-500/20">
+                  <Link to="/library/careers" className="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2.5 px-6 rounded-xl transition-colors shadow-md shadow-amber-500/20">
                     Continue Task
-                  </button>
+                  </Link>
                 </div>
               )}
             </div>
