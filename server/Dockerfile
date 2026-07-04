@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM node:22-alpine
 
 # Set working directory
 WORKDIR /app
@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install production dependencies
-RUN npm ci --only=production
+RUN npm install --omit=dev
 
 # Copy source code
 COPY . .
