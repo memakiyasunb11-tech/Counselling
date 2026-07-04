@@ -19,6 +19,9 @@ import CounsellorSessions from '../pages/dashboards/CounsellorSessions';
 import CounsellorReports from '../pages/dashboards/CounsellorReports';
 import CounsellorSettings from '../pages/dashboards/CounsellorSettings';
 import AdminDashboard from '../pages/dashboards/AdminDashboard';
+import AdminUsers from '../pages/dashboards/AdminUsers';
+import AdminLeads from '../pages/dashboards/AdminLeads';
+import AdminSettings from '../pages/dashboards/AdminSettings';
 import Assessments from '../pages/Assessments';
 import CareerLibrary from '../pages/CareerLibrary';
 import SessionRoom from '../pages/dashboards/SessionRoom';
@@ -76,6 +79,9 @@ const AppRoutes: React.FC = () => {
           <Route path="/counsellor/reports" element={<ProtectedRoute allowedRoles={['counsellor']}><CounsellorReports /></ProtectedRoute>} />
           <Route path="/counsellor/settings" element={<ProtectedRoute allowedRoles={['counsellor']}><CounsellorSettings /></ProtectedRoute>} />
           <Route path="/admin/dashboard" element={<ProtectedRoute allowedRoles={['admin']}><AdminDashboard /></ProtectedRoute>} />
+          <Route path="/admin/users" element={<ProtectedRoute allowedRoles={['admin']}><AdminUsers /></ProtectedRoute>} />
+          <Route path="/admin/leads" element={<ProtectedRoute allowedRoles={['admin']}><AdminLeads /></ProtectedRoute>} />
+          <Route path="/admin/settings" element={<ProtectedRoute allowedRoles={['admin']}><AdminSettings /></ProtectedRoute>} />
           <Route path="/assessments" element={<Assessments />} />
         </Route>
 

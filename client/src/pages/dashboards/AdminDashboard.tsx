@@ -1,29 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Download } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../firebase';
+import { Users, Briefcase, Settings } from 'lucide-react';
 
 const AdminDashboard: React.FC = () => {
-  const [leads, setLeads] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [stats, setStats] = useState({ users: 0, leads: 0, activeSessions: 34 });
 
   useEffect(() => {
-    const fetchLeads = async () => {
+    const fetchStats = async () => {
       try {
-        // Mocking for the UI demo since the backend might not be fully up
-        setTimeout(() => {
-          setLeads([
-            { name: 'Sarah Connor', contactInfo: { email: 'sarah@example.com', phone: '555-0101' }, enquiryType: 'B.Tech Admissions', stage: 'New', createdAt: new Date().toISOString() },
-            { name: 'John Smith', contactInfo: { email: 'john@example.com', phone: '555-0102' }, enquiryType: 'Career Counselling', stage: 'Contacted', createdAt: new Date().toISOString() },
-            { name: 'Emma Watson', contactInfo: { email: 'emma@example.com', phone: '555-0103' }, enquiryType: 'Study Abroad', stage: 'Qualified', createdAt: new Date().toISOString() },
-          ]);
-          setLoading(false);
-        }, 1000);
+        const usersSnap = await getDocs(collection(db, 'users'));
+        const leadsSnap = await getDocs(collection(db, 'leads'));
+        setStats(prev => ({ ...prev, users: usersSnap.size, leads: leadsSnap.size }));
       } catch (error) {
-        console.error('Failed to fetch leads');
-        setLoading(false);
+        console.error("Failed to fetch stats");
       }
     };
-    fetchLeads();
+    fetchStats();
   }, []);
 
   return (
@@ -34,11 +29,11 @@ const AdminDashboard: React.FC = () => {
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
         {[
-          { label: 'Total Users', value: '1,248', color: 'text-emerald-500', bg: 'bg-emerald-50' },
-          { label: 'Active Sessions', value: '34', color: 'text-sky-500', bg: 'bg-sky-50' },
-          { label: 'New Leads Today', value: '12', color: 'text-amber-500', bg: 'bg-amber-50' },
+          { label: 'Total Users', value: stats.users, color: 'text-emerald-500', bg: 'bg-emerald-50' },
+          { label: 'Active Sessions', value: stats.activeSessions, color: 'text-sky-500', bg: 'bg-sky-50' },
+          { label: 'CRM Leads', value: stats.leads, color: 'text-amber-500', bg: 'bg-amber-50' },
         ].map((stat, i) => (
           <motion.div 
             key={stat.label} 
@@ -58,86 +53,30 @@ const AdminDashboard: React.FC = () => {
         ))}
       </div>
 
-      {/* Leads Table */}
-      <div className="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl font-bold text-slate-900">Recent CRM Leads</h2>
-          <div className="flex gap-4">
-            <button 
-              onClick={async () => {
-                const { seedDatabase } = await import('../../utils/seedData');
-                try {
-                  await seedDatabase();
-                  alert('Database seeded successfully!');
-                } catch (e: any) {
-                  alert('Failed to seed: ' + e.message);
-                }
-              }}
-              className="flex items-center gap-2 bg-amber-50 text-amber-600 hover:bg-amber-100 hover:text-amber-700 px-5 py-2.5 font-bold rounded-xl transition-colors"
-            >
-              Seed Database
-            </button>
-            <button className="flex items-center gap-2 bg-emerald-50 text-emerald-600 hover:bg-emerald-100 hover:text-emerald-700 px-5 py-2.5 font-bold rounded-xl transition-colors">
-              <Download size={18} /> Export CSV
-            </button>
+      {/* Quick Links */}
+      <h2 className="text-2xl font-bold text-slate-900 mb-6">Quick Actions</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Link to="/admin/users" className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-all group flex flex-col items-center justify-center text-center">
+          <div className="w-16 h-16 bg-emerald-50 text-emerald-500 rounded-2xl flex items-center justify-center mb-4 group-hover:-translate-y-1 transition-transform">
+            <Users size={32} />
           </div>
-        </div>
-
-        {loading ? (
-          <div className="flex justify-center items-center py-12">
-            <div className="w-8 h-8 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+          <h3 className="font-bold text-lg text-slate-900">Manage Users</h3>
+          <p className="text-slate-500 text-sm mt-2">View, edit roles, and delete registered users.</p>
+        </Link>
+        <Link to="/admin/leads" className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-all group flex flex-col items-center justify-center text-center">
+          <div className="w-16 h-16 bg-amber-50 text-amber-500 rounded-2xl flex items-center justify-center mb-4 group-hover:-translate-y-1 transition-transform">
+            <Briefcase size={32} />
           </div>
-        ) : (
-          <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-slate-100">
-              <thead>
-                <tr>
-                  <th className="px-4 py-3 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Name</th>
-                  <th className="px-4 py-3 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Contact</th>
-                  <th className="px-4 py-3 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Enquiry Type</th>
-                  <th className="px-4 py-3 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Stage</th>
-                  <th className="px-4 py-3 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Date</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-50">
-                {leads.length > 0 ? (
-                  leads.map((lead, i) => (
-                    <motion.tr 
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.05 }}
-                      key={i} 
-                      className="hover:bg-slate-50 transition-colors"
-                    >
-                      <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-900 font-bold">{lead.name}</td>
-                      <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-500 font-medium">
-                        {lead.contactInfo?.email}<br />
-                        <span className="text-xs text-slate-400">{lead.contactInfo?.phone}</span>
-                      </td>
-                      <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-600 font-medium">{lead.enquiryType}</td>
-                      <td className="px-4 py-4 whitespace-nowrap text-sm">
-                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-                          lead.stage === 'New' ? 'bg-sky-50 text-sky-600' :
-                          lead.stage === 'Contacted' ? 'bg-amber-50 text-amber-600' :
-                          'bg-emerald-50 text-emerald-600'
-                        }`}>
-                          {lead.stage}
-                        </span>
-                      </td>
-                      <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-500 font-medium">
-                        {new Date(lead.createdAt).toLocaleDateString()}
-                      </td>
-                    </motion.tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan={5} className="px-4 py-8 text-center text-slate-400 font-medium text-sm">No leads found.</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+          <h3 className="font-bold text-lg text-slate-900">CRM Leads</h3>
+          <p className="text-slate-500 text-sm mt-2">Track prospect stages and enquiry details.</p>
+        </Link>
+        <Link to="/admin/settings" className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-all group flex flex-col items-center justify-center text-center">
+          <div className="w-16 h-16 bg-sky-50 text-sky-500 rounded-2xl flex items-center justify-center mb-4 group-hover:-translate-y-1 transition-transform">
+            <Settings size={32} />
           </div>
-        )}
+          <h3 className="font-bold text-lg text-slate-900">Platform Settings</h3>
+          <p className="text-slate-500 text-sm mt-2">Configure maintenance mode and globals.</p>
+        </Link>
       </div>
     </div>
   );
