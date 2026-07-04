@@ -111,7 +111,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ type: 'spring', stiffness: 220, damping: 20, delay: 0.55 }}
             >
-              Forge
+              Fordge
             </motion.span>
           </motion.h1>
 
