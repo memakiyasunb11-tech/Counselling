@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
-import { 
-  Home, Video, Map, Settings, Users, FileText, 
+import {
+  Home, Video, Map, Settings, Users, FileText,
   Menu, X, Bell, UserCircle, LogOut, Briefcase
 } from 'lucide-react';
 import logo from '../../assets/logo.png';
@@ -10,7 +10,7 @@ const DashboardLayout: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  
+
   // Determine role based on URL path
   let role: 'student' | 'counsellor' | 'admin' = 'student';
   if (location.pathname.startsWith('/admin')) role = 'admin';
@@ -55,16 +55,16 @@ const DashboardLayout: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 flex font-sans">
-      
+
       {/* Sidebar - Desktop */}
       <aside className="hidden lg:flex flex-col w-64 bg-white border-r border-slate-200 fixed h-full z-20">
         <div className="h-20 flex items-center px-6 border-b border-slate-100 shrink-0">
           <Link to="/" className="flex items-center gap-2">
-            <img src={logo} alt="EduForge Logo" className="h-8 w-auto" />
-            <span className="font-bold text-slate-900 text-lg">EduForge</span>
+            <img src={logo} alt="EduFordge Logo" className="h-8 w-auto" />
+            <span className="font-bold text-slate-900 text-lg">EduFordge</span>
           </Link>
         </div>
-        
+
         <div className="px-6 py-4">
           <div className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-${config.theme}-50 text-${config.theme}-600 inline-block mb-4`}>
             {config.name}
@@ -79,11 +79,10 @@ const DashboardLayout: React.FC = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all ${
-                  isActive 
-                    ? `bg-${config.theme}-500 text-white shadow-md shadow-${config.theme}-500/20` 
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all ${isActive
+                    ? `bg-${config.theme}-500 text-white shadow-md shadow-${config.theme}-500/20`
                     : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
-                }`}
+                  }`}
               >
                 <Icon size={20} className={isActive ? 'text-white' : `text-slate-400`} />
                 {link.name}
@@ -93,7 +92,7 @@ const DashboardLayout: React.FC = () => {
         </nav>
 
         <div className="p-4 border-t border-slate-100">
-          <button 
+          <button
             onClick={() => navigate('/login')}
             className="flex items-center gap-3 px-4 py-3 w-full rounded-xl font-medium text-slate-500 hover:bg-rose-50 hover:text-rose-600 transition-colors"
           >
@@ -105,11 +104,11 @@ const DashboardLayout: React.FC = () => {
 
       {/* Main Content */}
       <div className="flex-1 lg:pl-64 flex flex-col min-h-screen">
-        
+
         {/* Topbar */}
         <header className="h-20 bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-10 flex items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4">
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(true)}
               className="lg:hidden p-2 -ml-2 text-slate-500 hover:bg-slate-100 rounded-lg"
             >
@@ -148,18 +147,18 @@ const DashboardLayout: React.FC = () => {
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden flex">
           <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)}></div>
-          
+
           <aside className="relative w-72 bg-white h-full shadow-2xl flex flex-col">
             <div className="h-20 flex items-center justify-between px-6 border-b border-slate-100 shrink-0">
               <Link to="/" className="flex items-center gap-2">
-                <img src={logo} alt="EduForge Logo" className="h-8 w-auto" />
-                <span className="font-bold text-slate-900 text-lg">EduForge</span>
+                <img src={logo} alt="EduFordge Logo" className="h-8 w-auto" />
+                <span className="font-bold text-slate-900 text-lg">EduFordge</span>
               </Link>
               <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-slate-400 hover:text-slate-600 bg-slate-50 rounded-lg">
                 <X size={20} />
               </button>
             </div>
-            
+
             <div className="px-6 py-6">
               <div className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-${config.theme}-50 text-${config.theme}-600 inline-block mb-6`}>
                 {config.name}
@@ -173,11 +172,10 @@ const DashboardLayout: React.FC = () => {
                       key={link.name}
                       to={link.path}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all ${
-                        isActive 
-                          ? `bg-${config.theme}-500 text-white shadow-md shadow-${config.theme}-500/20` 
+                      className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all ${isActive
+                          ? `bg-${config.theme}-500 text-white shadow-md shadow-${config.theme}-500/20`
                           : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
-                      }`}
+                        }`}
                     >
                       <Icon size={20} className={isActive ? 'text-white' : `text-slate-400`} />
                       {link.name}

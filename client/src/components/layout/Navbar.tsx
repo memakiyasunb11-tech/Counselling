@@ -9,8 +9,8 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center h-16 px-6">
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center space-x-2 text-xl font-extrabold text-slate-900 tracking-tight">
-              <img src={logo} alt="EduForge Logo" className="h-8 w-auto object-contain" />
-              <span>EduForge</span>
+              <img src={logo} alt="EduFordge Logo" className="h-8 w-auto object-contain" />
+              <span>EduFordge</span>
             </Link>
           </div>
           <div className="hidden md:flex space-x-8">

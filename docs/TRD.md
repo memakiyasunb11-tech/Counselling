@@ -1,10 +1,10 @@
 # TECHNICAL REQUIREMENTS DOCUMENT (TRD)
 
-**EduForge**
+**EduFordge**
 *Career Counselling / Career Guidance / Student Mentorship / Psychometric Assessment / College & Career Planning Platform*
 
 ## 1. Executive Summary
-This document outlines the technical architecture, technology stack, database considerations, API design, and deployment strategy for EduForge. It bridges the product requirements (PRD) with the development execution.
+This document outlines the technical architecture, technology stack, database considerations, API design, and deployment strategy for EduFordge. It bridges the product requirements (PRD) with the development execution.
 
 ## 2. Technology Stack
 
@@ -73,7 +73,7 @@ APIs will follow standard RESTful conventions. All secure endpoints will require
 - **Frontend Hosting**: Vercel or Netlify (Fast global CDN, easy CI/CD integration).
 - **Backend Hosting**: Render, Heroku, or AWS EC2 (Node.js runtime).
 - **Database Hosting**: MongoDB Atlas (Managed DB for scalability and backups).
-- **Domain & DNS**: Custom domain (e.g., eduforge.com) with SSL certificates managed by Cloudflare or the hosting provider.
+- **Domain & DNS**: Custom domain (e.g., EduFordge.com) with SSL certificates managed by Cloudflare or the hosting provider.
 
 ## 7. Version Control & CI/CD
 - **Repository**: GitHub or GitLab.

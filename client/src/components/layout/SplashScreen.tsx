@@ -83,7 +83,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
             />
             <img
               src={logo}
-              alt="EduForge Logo"
+              alt="EduFordge Logo"
               className="relative z-10 rounded-[24px] shadow-xl"
               style={{
                 width: 128,

@@ -15,7 +15,7 @@ app.use('/api/leads', leadRoutes);
 
 // Health check endpoint
 app.get('/', (req, res) => {
-  res.status(200).json({ message: 'EduForge API is running' });
+  res.status(200).json({ message: 'EduFordge API is running' });
 });
 
 module.exports = app;

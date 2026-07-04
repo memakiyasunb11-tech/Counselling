@@ -1,3 +1,4 @@
+declare var process: any;
 import { seedDatabase } from '../utils/seedData';
 
 console.log('Starting database seed process...');

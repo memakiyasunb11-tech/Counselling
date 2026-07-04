@@ -1,10 +1,10 @@
 # DATABASE SCHEMA DOCUMENT
 
-**EduForge**
+**EduFordge**
 *Target Database: MongoDB (via Mongoose)*
 
 ## Overview
-This document outlines the primary data collections and relationships for the EduForge platform. The schema is designed for flexibility, separating authentication credentials from role-specific profile data.
+This document outlines the primary data collections and relationships for the EduFordge platform. The schema is designed for flexibility, separating authentication credentials from role-specific profile data.
 
 ---
 

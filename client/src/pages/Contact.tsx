@@ -38,7 +38,7 @@ const Contact: React.FC = () => {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
@@ -59,13 +59,13 @@ const Contact: React.FC = () => {
               <div className="w-12 h-12 bg-cyan-500/20 rounded-full flex items-center justify-center text-cyan-400">✉️</div>
               <div>
                 <h4 className="text-white font-medium">Email Us</h4>
-                <p className="text-gray-400">hello@eduforge.com</p>
+                <p className="text-gray-400">hello@EduFordge.com</p>
               </div>
             </div>
           </div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -75,28 +75,28 @@ const Contact: React.FC = () => {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-400 mb-1">Full Name</label>
-              <input 
+              <input
                 type="text" name="name" required value={formData.name} onChange={handleChange}
                 className="w-full bg-[#0F172A] border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-indigo-500"
               />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-400 mb-1">Email Address</label>
-              <input 
+              <input
                 type="email" name="email" required value={formData.email} onChange={handleChange}
                 className="w-full bg-[#0F172A] border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-indigo-500"
               />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-400 mb-1">Phone Number</label>
-              <input 
+              <input
                 type="tel" name="phone" value={formData.phone} onChange={handleChange}
                 className="w-full bg-[#0F172A] border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-indigo-500"
               />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-400 mb-1">Enquiry Type</label>
-              <select 
+              <select
                 name="enquiryType" value={formData.enquiryType} onChange={handleChange}
                 className="w-full bg-[#0F172A] border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-indigo-500"
               >
@@ -106,8 +106,8 @@ const Contact: React.FC = () => {
                 <option>Other</option>
               </select>
             </div>
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className="w-full mt-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-4 rounded-lg transition-colors"
             >
               Request Consultation

@@ -1,9 +1,9 @@
 # ADMIN PANEL FUNCTIONAL SPECIFICATION
 
-**EduForge**
+**EduFordge**
 
 ## 1. Overview
-The Admin Panel is the control center for EduForge's internal operations. It allows `SUPER_ADMIN` and `CONTENT_EDITOR` roles to manage users, monitor business metrics, update website content, and configure psychometric assessments.
+The Admin Panel is the control center for EduFordge's internal operations. It allows `SUPER_ADMIN` and `CONTENT_EDITOR` roles to manage users, monitor business metrics, update website content, and configure psychometric assessments.
 
 ## 2. Dashboard & Analytics
 - **Key Metrics Overview**:

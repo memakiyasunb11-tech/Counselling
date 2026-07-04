@@ -25,7 +25,7 @@ const Register: React.FC = () => {
     e.preventDefault();
     setStatus('Registering...');
     setError('');
-    
+
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
       const user = userCredential.user;
@@ -62,7 +62,7 @@ const Register: React.FC = () => {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 font-sans">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="max-w-md w-full space-y-8 bg-white p-10 rounded-[2rem] border border-slate-200 shadow-2xl relative overflow-hidden"
@@ -83,7 +83,7 @@ const Register: React.FC = () => {
             </Link>
           </p>
         </div>
-        
+
         <form className="mt-8 space-y-6 relative z-10" onSubmit={handleSubmit}>
           <div className="space-y-5">
             <div className="grid grid-cols-2 gap-4">
@@ -108,7 +108,7 @@ const Register: React.FC = () => {
               <label className="block text-sm font-bold text-slate-700 mb-2">Email address</label>
               <input
                 type="email" name="email" required value={formData.email} onChange={handleChange}
-                placeholder="e.g., student@eduforge.com"
+                placeholder="e.g., student@EduFordge.com"
                 className="appearance-none relative block w-full px-4 py-3 border border-slate-200 bg-slate-50 placeholder-slate-400 text-slate-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-400/50 focus:border-sky-400 focus:bg-white transition-all font-medium"
               />
             </div>

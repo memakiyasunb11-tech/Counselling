@@ -1,14 +1,14 @@
 # STUDENT JOURNEY FLOW DOCUMENT
 
-**EduForge**
+**EduFordge**
 
-This document outlines the end-to-end user experience for a student progressing through the EduForge platform, from initial discovery to continuous roadmap tracking.
+This document outlines the end-to-end user experience for a student progressing through the EduFordge platform, from initial discovery to continuous roadmap tracking.
 
 ---
 
 ## 1. Discovery & Lead Capture
 
-1. **Landing on Website**: The student (or parent) visits the EduForge public website, explores services, and views trust metrics.
+1. **Landing on Website**: The student (or parent) visits the EduFordge public website, explores services, and views trust metrics.
 2. **Exploration**: They browse the Career Library or read blog posts regarding career confusion.
 3. **Action (Lead Creation)**: 
    - They click "Book Free Consultation".

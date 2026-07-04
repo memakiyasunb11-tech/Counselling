@@ -9,8 +9,8 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="flex items-center space-x-2 text-xl font-extrabold text-slate-900 tracking-tight mb-4">
-              <img src={logo} alt="EduForge Logo" className="h-8 w-auto object-contain" />
-              <span>EduForge</span>
+              <img src={logo} alt="EduFordge Logo" className="h-8 w-auto object-contain" />
+              <span>EduFordge</span>
             </Link>
             <p className="mt-4 text-sm text-slate-500 font-medium leading-relaxed">
               Forge Your Future with Clarity. Career decisions, backed by science and expert mentorship.
@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
         </div>
         <div className="mt-16 border-t border-gray-100 pt-8 flex items-center justify-between">
           <p className="text-sm text-slate-400 font-medium">
-            &copy; {new Date().getFullYear()} EduForge. All rights reserved.
+            &copy; {new Date().getFullYear()} EduFordge. All rights reserved.
           </p>
         </div>
       </div>

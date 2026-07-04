@@ -1,6 +1,6 @@
 # UI SITEMAP & WIREFRAME DOCUMENT
 
-**EduForge**
+**EduFordge**
 
 ## 1. Information Architecture (Sitemap)
 

@@ -1,19 +1,19 @@
 # PRODUCT REQUIREMENTS DOCUMENT (PRD)
 
-**EduForge**
+**EduFordge**
 *Career Counselling / Career Guidance / Student Mentorship / Psychometric Assessment / College & Career Planning Platform*
 **Version:** 1.0
-**Prepared For:** EduForge
+**Prepared For:** EduFordge
 **Document Type:** Product Requirements Document (PRD)
 **Reference Inspiration:** PixelShield theme style, motion feel, section hierarchy, CTA presentation, and premium SaaS landing-page experience only.
 **Product Domain:** Career Counselling / Student Guidance / Psychometric Assessment / Mentorship / College & Career Planning
 
 ## 1. Executive Summary
 ### 1.1 Product Name
-EduForge
+EduFordge
 ### 1.2 Product Vision
-EduForge will be a modern Career Counselling and Student Success Platform that helps students, parents, schools, counsellors, and career mentors make better academic and career decisions through psychometric assessments, counselling sessions, career roadmaps, skill-gap analysis, college/course discovery, mentorship, and AI-assisted career guidance tools.
-EduForge should combine:
+EduFordge will be a modern Career Counselling and Student Success Platform that helps students, parents, schools, counsellors, and career mentors make better academic and career decisions through psychometric assessments, counselling sessions, career roadmaps, skill-gap analysis, college/course discovery, mentorship, and AI-assisted career guidance tools.
+EduFordge should combine:
 - Premium trust-building public website
 - Lead generation + consultation booking
 - Student self-discovery journey
@@ -25,7 +25,7 @@ EduForge should combine:
 
 ## 2. Design Direction & Product Experience
 ### 2.1 Design Inspiration Source
-The EduForge website UI/UX should take inspiration from the feel of PixelShield in the following ways:
+The EduFordge website UI/UX should take inspiration from the feel of PixelShield in the following ways:
 **Use from inspiration**
 - Strong hero-first landing page
 - Premium dark/modern or high-contrast polished UI aesthetic
@@ -42,11 +42,11 @@ The EduForge website UI/UX should take inspiration from the feel of PixelShield 
 
 **Do NOT copy directly**
 - Do not copy content, brand language, photography business messaging, icons, or structure 1:1.
-- EduForge must be a career-tech + counselling brand with its own identity.
+- EduFordge must be a career-tech + counselling brand with its own identity.
 
 ## 3. Brand Positioning
 ### 3.1 Brand Name
-EduForge
+EduFordge
 ### 3.2 Tagline Options
 - Forge Your Future with Clarity
 - Career Decisions, Backed by Science
@@ -63,7 +63,7 @@ EduForge
 - Premium but approachable
 
 ## 4. Business Goals
-EduForge aims to:
+EduFordge aims to:
 - Generate leads for counselling and assessment services.
 - Convert students/parents into paid counselling programs.
 - Offer structured psychometric and career planning journeys.
@@ -81,7 +81,7 @@ EduForge aims to:
 - Parents
 - Career Counsellors / Mentors
 - School Admin / Institutional Partners
-- EduForge Internal Admin / Operations Team
+- EduFordge Internal Admin / Operations Team
 ### 5.2 User Personas
 **A. Student Persona**
 - Unsure about stream selection, career path, course choice, or college
@@ -97,7 +97,7 @@ EduForge aims to:
 - Needs control over website, leads, packages, counsellors, reports, tests, payments, and analytics
 
 ## 6. Product Scope
-EduForge will have two major layers:
+EduFordge will have two major layers:
 ### 6.1 Public Website / Marketing Platform
 **Purpose:**
 - Explain services
@@ -144,7 +144,7 @@ EduForge will have two major layers:
 ## 8. Information Architecture (High-Level Sitemap)
 ### 8.1 Public Website Sitemap
 - Home
-- About EduForge
+- About EduFordge
 - Services
   - Career Counselling
   - Psychometric Assessment
@@ -225,7 +225,7 @@ EduForge will have two major layers:
 
 ## 9. Website UX & Visual Style Requirements
 ### 9.1 Visual Style
-EduForge should feel:
+EduFordge should feel:
 - Premium
 - Modern
 - High-conviction
@@ -246,7 +246,7 @@ EduForge should feel:
 - Consultation booking CTA bands
 - Elegant footer with newsletter and quick links
 
-### 9.3 Recommended EduForge Theme Palette
+### 9.3 Recommended EduFordge Theme Palette
 **Option A: Dark Premium**
 - Background: #0B1020 / #0F172A
 - Primary Accent: #4F46E5
@@ -320,7 +320,7 @@ Use animations inspired by the motion feel of PixelShield:
 **Phase 2**: college/course library full, school partner dashboard, AI assistant, advanced analytics.
 
 ## 40. Final Product Statement
-EduForge should be built as a premium career guidance platform that combines:
+EduFordge should be built as a premium career guidance platform that combines:
 - trust-building marketing website
 - scientific assessment-driven student discovery
 - expert counselling workflows

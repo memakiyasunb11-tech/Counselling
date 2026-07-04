@@ -47,8 +47,8 @@ const Login: React.FC = () => {
   const handleDemoLogin = async (role: 'student' | 'counsellor' | 'admin') => {
     setStatus(`Authenticating demo ${role}...`);
     setError('');
-    
-    const demoEmail = `${role}@demo.com`;
+
+    const demoEmail = `demo_account_${role}@EduFordge.com`;
     const demoPassword = 'password123';
 
     try {
@@ -58,17 +58,17 @@ const Login: React.FC = () => {
       } catch (err: any) {
         // If the user doesn't exist, create it on the fly
         if (err.code === 'auth/user-not-found' || err.code === 'auth/invalid-credential' || err.code === 'auth/invalid-login-credentials') {
-           const creds = await createUserWithEmailAndPassword(auth, demoEmail, demoPassword);
-           await setDoc(doc(db, 'users', creds.user.uid), {
-             uid: creds.user.uid,
-             firstName: 'Demo',
-             lastName: role,
-             email: demoEmail,
-             role: role,
-             createdAt: new Date().toISOString()
-           });
+          const creds = await createUserWithEmailAndPassword(auth, demoEmail, demoPassword);
+          await setDoc(doc(db, 'users', creds.user.uid), {
+            uid: creds.user.uid,
+            firstName: 'Demo',
+            lastName: role,
+            email: demoEmail,
+            role: role,
+            createdAt: new Date().toISOString()
+          });
         } else {
-           throw err;
+          throw err;
         }
       }
 
@@ -76,7 +76,7 @@ const Login: React.FC = () => {
       if (role === 'admin') navigate('/admin/dashboard');
       else if (role === 'counsellor') navigate('/counsellor/dashboard');
       else navigate('/student/dashboard');
-      
+
     } catch (err: any) {
       console.error(err);
       setStatus('');
@@ -86,7 +86,7 @@ const Login: React.FC = () => {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 font-sans">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="max-w-md w-full space-y-8 bg-white p-10 rounded-[2rem] border border-slate-200 shadow-2xl relative overflow-hidden"
@@ -107,7 +107,7 @@ const Login: React.FC = () => {
             </Link>
           </p>
         </div>
-        
+
         <form className="mt-8 space-y-6 relative z-10" onSubmit={handleLogin}>
           <div className="space-y-5">
             <div>
@@ -178,7 +178,7 @@ const Login: React.FC = () => {
             <span className="text-xs font-bold text-slate-900 group-hover:text-white">Admin</span>
           </button>
         </div>
-        
+
         {status && <p className="text-center text-sm font-bold text-amber-500 mt-6 animate-pulse relative z-10">{status}</p>}
         {error && <p className="text-center text-sm font-bold text-red-500 mt-6 relative z-10">{error}</p>}
       </motion.div>

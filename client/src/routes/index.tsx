@@ -10,7 +10,14 @@ import Contact from '../pages/Contact';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import StudentDashboard from '../pages/dashboards/StudentDashboard';
+import StudentRoadmap from '../pages/dashboards/StudentRoadmap';
+import StudentCounselling from '../pages/dashboards/StudentCounselling';
+import StudentSettings from '../pages/dashboards/StudentSettings';
 import CounsellorDashboard from '../pages/dashboards/CounsellorDashboard';
+import CounsellorStudents from '../pages/dashboards/CounsellorStudents';
+import CounsellorSessions from '../pages/dashboards/CounsellorSessions';
+import CounsellorReports from '../pages/dashboards/CounsellorReports';
+import CounsellorSettings from '../pages/dashboards/CounsellorSettings';
 import AdminDashboard from '../pages/dashboards/AdminDashboard';
 import Assessments from '../pages/Assessments';
 import CareerLibrary from '../pages/CareerLibrary';
@@ -56,8 +63,18 @@ const AppRoutes: React.FC = () => {
         
         {/* Authenticated Dashboard Routes */}
         <Route element={<ProtectedRoute><DashboardLayout /></ProtectedRoute>}>
+          {/* Student Routes */}
           <Route path="/student/dashboard" element={<ProtectedRoute allowedRoles={['student']}><StudentDashboard /></ProtectedRoute>} />
+          <Route path="/student/roadmap" element={<ProtectedRoute allowedRoles={['student']}><StudentRoadmap /></ProtectedRoute>} />
+          <Route path="/student/counselling" element={<ProtectedRoute allowedRoles={['student']}><StudentCounselling /></ProtectedRoute>} />
+          <Route path="/student/settings" element={<ProtectedRoute allowedRoles={['student']}><StudentSettings /></ProtectedRoute>} />
+          
+          {/* Counsellor Routes */}
           <Route path="/counsellor/dashboard" element={<ProtectedRoute allowedRoles={['counsellor']}><CounsellorDashboard /></ProtectedRoute>} />
+          <Route path="/counsellor/students" element={<ProtectedRoute allowedRoles={['counsellor']}><CounsellorStudents /></ProtectedRoute>} />
+          <Route path="/counsellor/sessions" element={<ProtectedRoute allowedRoles={['counsellor']}><CounsellorSessions /></ProtectedRoute>} />
+          <Route path="/counsellor/reports" element={<ProtectedRoute allowedRoles={['counsellor']}><CounsellorReports /></ProtectedRoute>} />
+          <Route path="/counsellor/settings" element={<ProtectedRoute allowedRoles={['counsellor']}><CounsellorSettings /></ProtectedRoute>} />
           <Route path="/admin/dashboard" element={<ProtectedRoute allowedRoles={['admin']}><AdminDashboard /></ProtectedRoute>} />
           <Route path="/assessments" element={<Assessments />} />
         </Route>
