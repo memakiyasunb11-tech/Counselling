@@ -30,6 +30,7 @@ import AdminDashboard from '../pages/dashboards/AdminDashboard';
 import AdminUsers from '../pages/dashboards/AdminUsers';
 import AdminLeads from '../pages/dashboards/AdminLeads';
 import AdminSettings from '../pages/dashboards/AdminSettings';
+import AdminContent from '../pages/dashboards/AdminContent';
 import Assessments from '../pages/Assessments';
 import CareerLibrary from '../pages/CareerLibrary';
 import SessionRoom from '../pages/dashboards/SessionRoom';
@@ -98,6 +99,7 @@ const AppRoutes: React.FC = () => {
           <Route path="/admin/users" element={<ProtectedRoute allowedRoles={['admin']}><AdminUsers /></ProtectedRoute>} />
           <Route path="/admin/leads" element={<ProtectedRoute allowedRoles={['admin']}><AdminLeads /></ProtectedRoute>} />
           <Route path="/admin/settings" element={<ProtectedRoute allowedRoles={['admin']}><AdminSettings /></ProtectedRoute>} />
+          <Route path="/admin/content" element={<ProtectedRoute allowedRoles={['admin']}><AdminContent /></ProtectedRoute>} />
         </Route>
 
         {/* Standalone/Fullscreen Routes */}

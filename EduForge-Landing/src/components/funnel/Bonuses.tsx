@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../firebase';
 
-const Bonuses: React.FC = () => {
-  const bonuses = [
+const defaultBonuses = [
     {
       title: "4 Ways to Map Your Career.",
       subtitle: "The 4 Pillars of Career Mapping",
@@ -88,6 +89,23 @@ const Bonuses: React.FC = () => {
       image: "https://images.unsplash.com/photo-1455390582262-044cdead27d8?q=80&w=600&auto=format&fit=crop"
     }
   ];
+
+const Bonuses: React.FC = () => {
+  const [bonuses, setBonuses] = useState(defaultBonuses);
+
+  useEffect(() => {
+    const fetchBonuses = async () => {
+      try {
+        const snap = await getDocs(collection(db, 'content_bonuses'));
+        if (!snap.empty) {
+          setBonuses(snap.docs.map(doc => doc.data() as any));
+        }
+      } catch (err) {
+        console.error("Failed to load Bonuses", err);
+      }
+    };
+    fetchBonuses();
+  }, []);
 
   return (
     <section className="py-24 px-6 bg-transparent relative z-10">

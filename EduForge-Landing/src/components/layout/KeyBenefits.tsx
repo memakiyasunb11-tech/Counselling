@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../firebase';
 
-const KeyBenefits: React.FC = () => {
-  const points = [
+const defaultPoints = [
     "Expert Mentorship from Industry Leaders",
     "AI-Powered Career & Psychometric Assessments",
     "Comprehensive College Admission Strategies",
@@ -25,6 +26,23 @@ const KeyBenefits: React.FC = () => {
     "Real-world Skill Development Tracking",
     "Post-Admission Orientation & Support"
   ];
+
+const KeyBenefits: React.FC = () => {
+  const [points, setPoints] = useState<string[]>(defaultPoints);
+
+  useEffect(() => {
+    const fetchPoints = async () => {
+      try {
+        const snap = await getDocs(collection(db, 'content_benefits'));
+        if (!snap.empty) {
+          setPoints(snap.docs.map(doc => doc.data().text as string));
+        }
+      } catch (err) {
+        console.error("Failed to load KeyBenefits", err);
+      }
+    };
+    fetchPoints();
+  }, []);
 
   return (
     <section className="py-16 px-6 bg-[#f8fafc] border-t border-[#e2e8f0]">

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../firebase';
 
-const Curriculum: React.FC = () => {
-  const modules = [
+const defaultModules = [
     {
       icon: "🧠",
       title: "7 Myths Quietly Ruining Your Career",
@@ -49,6 +50,23 @@ const Curriculum: React.FC = () => {
       desc: "How to connect with industry leaders and alumni before you even step foot on campus."
     }
   ];
+
+const Curriculum: React.FC = () => {
+  const [modules, setModules] = useState(defaultModules);
+
+  useEffect(() => {
+    const fetchModules = async () => {
+      try {
+        const snap = await getDocs(collection(db, 'content_curriculum'));
+        if (!snap.empty) {
+          setModules(snap.docs.map(doc => doc.data() as any));
+        }
+      } catch (err) {
+        console.error("Failed to load Curriculum", err);
+      }
+    };
+    fetchModules();
+  }, []);
 
   return (
     <section className="py-24 px-6 bg-transparent relative z-10">

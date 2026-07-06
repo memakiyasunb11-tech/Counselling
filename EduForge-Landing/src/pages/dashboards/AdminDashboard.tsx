@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase';
-import { Users, Briefcase, Settings } from 'lucide-react';
+import { Users, Briefcase, Settings, FileText } from 'lucide-react';
 
 const AdminDashboard: React.FC = () => {
   const [stats, setStats] = useState({ users: 0, leads: 0, activeSessions: 34 });
@@ -55,7 +55,7 @@ const AdminDashboard: React.FC = () => {
 
       {/* Quick Links */}
       <h2 className="text-2xl font-bold text-slate-900 mb-6">Quick Actions</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <Link to="/admin/users" className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-all group flex flex-col items-center justify-center text-center">
           <div className="w-16 h-16 bg-emerald-50 text-emerald-500 rounded-2xl flex items-center justify-center mb-4 group-hover:-translate-y-1 transition-transform">
             <Users size={32} />
@@ -76,6 +76,13 @@ const AdminDashboard: React.FC = () => {
           </div>
           <h3 className="font-bold text-lg text-slate-900">Platform Settings</h3>
           <p className="text-slate-500 text-sm mt-2">Configure maintenance mode and globals.</p>
+        </Link>
+        <Link to="/admin/content" className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-all group flex flex-col items-center justify-center text-center">
+          <div className="w-16 h-16 bg-fuchsia-50 text-fuchsia-500 rounded-2xl flex items-center justify-center mb-4 group-hover:-translate-y-1 transition-transform">
+            <FileText size={32} />
+          </div>
+          <h3 className="font-bold text-lg text-slate-900">Content Management</h3>
+          <p className="text-slate-500 text-sm mt-2">Add, Edit, and Delete landing page content.</p>
         </Link>
       </div>
     </div>

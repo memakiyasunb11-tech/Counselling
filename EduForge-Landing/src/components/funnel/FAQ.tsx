@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../firebase';
 
-const FAQ: React.FC = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const faqs = [
+const defaultFaqs = [
     {
       q: "I am completely confused about my career. Is this workshop for me?",
       a: "Yes! This workshop is specifically designed to help you discover your strengths, map out potential career paths, and gain absolute clarity even if you currently have zero direction."
@@ -38,6 +37,24 @@ const FAQ: React.FC = () => {
       a: "While high school students get the most benefit from early planning, college students who are confused about their specialization or first job will also find immense value in our frameworks."
     }
   ];
+
+const FAQ: React.FC = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [faqs, setFaqs] = useState(defaultFaqs);
+
+  useEffect(() => {
+    const fetchFaqs = async () => {
+      try {
+        const snap = await getDocs(collection(db, 'content_faqs'));
+        if (!snap.empty) {
+          setFaqs(snap.docs.map(doc => doc.data() as any));
+        }
+      } catch (err) {
+        console.error("Failed to load FAQs", err);
+      }
+    };
+    fetchFaqs();
+  }, []);
 
   return (
     <section className="py-24 px-6 bg-transparent relative z-10">
