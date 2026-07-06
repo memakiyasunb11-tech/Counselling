@@ -9,6 +9,8 @@ import Counseling from '../pages/Counseling';
 import Contact from '../pages/Contact';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import Blog from '../pages/Blog';
+import Community from '../pages/Community';
 import StudentDashboard from '../pages/dashboards/StudentDashboard';
 import StudentRoadmap from '../pages/dashboards/StudentRoadmap';
 import StudentCounselling from '../pages/dashboards/StudentCounselling';
@@ -61,6 +63,9 @@ const AppRoutes: React.FC = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/assessments" element={<Assessments />} />
           <Route path="/library/careers" element={<CareerLibrary />} />
         </Route>
         
@@ -82,7 +87,6 @@ const AppRoutes: React.FC = () => {
           <Route path="/admin/users" element={<ProtectedRoute allowedRoles={['admin']}><AdminUsers /></ProtectedRoute>} />
           <Route path="/admin/leads" element={<ProtectedRoute allowedRoles={['admin']}><AdminLeads /></ProtectedRoute>} />
           <Route path="/admin/settings" element={<ProtectedRoute allowedRoles={['admin']}><AdminSettings /></ProtectedRoute>} />
-          <Route path="/assessments" element={<Assessments />} />
         </Route>
 
         {/* Standalone/Fullscreen Routes */}
