@@ -31,6 +31,51 @@ const blogPosts = [
     author: "Anita Patel",
     date: "Jul 28, 2026",
     image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    id: 4,
+    title: "The Importance of Soft Skills in the Modern Workplace",
+    excerpt: "Why communication, empathy, and adaptability are just as important as technical skills for your career growth.",
+    category: "Skill Development",
+    author: "Rohan Verma",
+    date: "Jul 20, 2026",
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    id: 5,
+    title: "How to Build a Standout College Application",
+    excerpt: "Learn the secrets to crafting an application that catches the eye of admission officers at top universities.",
+    category: "College Planning",
+    author: "Dr. Anant Shah",
+    date: "Jul 12, 2026",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    id: 6,
+    title: "A Complete Guide to Scholarships and Financial Aid",
+    excerpt: "Don't let finances hold you back. Here is everything you need to know about securing funding for your education.",
+    category: "Study Abroad",
+    author: "Priya Sharma",
+    date: "Jul 05, 2026",
+    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    id: 7,
+    title: "Navigating a Career Change in Your 20s or 30s",
+    excerpt: "It's never too late to pivot. A structured approach to shifting industries without starting from scratch.",
+    category: "Career Insights",
+    author: "Mark Davis",
+    date: "Jun 28, 2026",
+    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    id: 8,
+    title: "Ace Your Next Interview with These Expert Tips",
+    excerpt: "From body language to answering tough questions, here is how you can prepare to impress any hiring manager.",
+    category: "Interview Prep",
+    author: "Anita Patel",
+    date: "Jun 15, 2026",
+    image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1000&auto=format&fit=crop"
   }
 ];
 

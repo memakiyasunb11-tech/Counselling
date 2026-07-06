@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Calendar, Users, Target, BookOpen, Compass, ArrowRight, PlayCircle } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
+import CounselingExtra from '../components/CounselingExtra';
 
 const services = [
   {
@@ -173,6 +174,8 @@ const Counseling: React.FC = () => {
             </div>
           </div>
         </motion.div>
+        
+        <CounselingExtra />
       </div>
     </div>
   );

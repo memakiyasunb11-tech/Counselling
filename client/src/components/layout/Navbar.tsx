@@ -8,10 +8,10 @@ const Navbar: React.FC = () => {
       <nav className="max-w-7xl mx-auto bg-white/80 backdrop-blur-md border border-gray-200/50 shadow-sm rounded-2xl">
         <div className="flex justify-between items-center h-16 px-6">
           <div className="flex-shrink-0 flex items-center">
-            <Link to="/" className="flex items-center space-x-2 text-xl font-extrabold text-slate-900 tracking-tight">
-              <img src={logo} alt="EduFordge Logo" className="h-8 w-auto object-contain" />
-              <span>EduFordge</span>
+            <Link to="/" className="flex items-center">
+              <img src={logo} alt="EduForge Logo" className="h-10 md:h-12 w-auto object-contain" />
             </Link>
+
           </div>
           <div className="hidden md:flex space-x-8">
             <Link to="/" className="text-amber-500 font-semibold text-sm">Home</Link>
