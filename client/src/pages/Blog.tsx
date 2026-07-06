@@ -1,7 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Calendar, User } from 'lucide-react';
+import { ArrowRight, Calendar, User, X } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 
 const blogPosts = [
@@ -12,7 +12,7 @@ const blogPosts = [
     category: "College Planning",
     author: "Dr. Anant Shah",
     date: "Aug 15, 2026",
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1000&auto=format&fit=crop"
   },
   {
     id: 2,
@@ -35,6 +35,8 @@ const blogPosts = [
 ];
 
 const Blog: React.FC = () => {
+  const [selectedPost, setSelectedPost] = useState<any>(null);
+
   return (
     <div className="min-h-screen pt-32 pb-24 font-sans relative z-10">
       <div className="max-w-7xl mx-auto px-6">
@@ -95,7 +97,7 @@ const Blog: React.FC = () => {
                   </div>
                   <span className="font-bold text-slate-900">{blogPosts[0].author}</span>
                 </div>
-                <button type="button" onClick={() => alert('Full article coming soon!')} className="flex items-center text-sky-600 font-bold hover:text-sky-700 transition-colors cursor-pointer">
+                <button type="button" onClick={() => setSelectedPost(blogPosts[0])} className="flex items-center text-sky-600 font-bold hover:text-sky-700 transition-colors cursor-pointer">
                   Read Article <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
@@ -137,7 +139,7 @@ const Blog: React.FC = () => {
                 </p>
                 <div className="flex items-center justify-between pt-4 border-t border-slate-100">
                   <span className="text-sm font-bold text-slate-900">{post.author}</span>
-                  <button type="button" onClick={() => alert('Full article coming soon!')} className="text-sky-600 font-bold text-sm flex items-center hover:text-sky-700 cursor-pointer">
+                  <button type="button" onClick={() => setSelectedPost(post)} className="text-sky-600 font-bold text-sm flex items-center hover:text-sky-700 cursor-pointer">
                     Read <ArrowRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
@@ -147,6 +149,99 @@ const Blog: React.FC = () => {
         </div>
 
       </div>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {selectedPost && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedPost(null)}
+              className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm cursor-pointer"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-4xl max-h-[90vh] bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col"
+            >
+              <button
+                onClick={() => setSelectedPost(null)}
+                className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/20 hover:bg-black/40 rounded-full flex items-center justify-center text-white transition-colors backdrop-blur-md"
+              >
+                <X size={24} />
+              </button>
+              <div className="overflow-y-auto overflow-x-hidden flex-1">
+                <div className="h-64 sm:h-80 relative">
+                  <img
+                    src={selectedPost.image}
+                    alt={selectedPost.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent flex items-end">
+                    <div className="p-8 w-full">
+                      <div className="flex items-center gap-4 mb-3">
+                        <span className="px-3 py-1 bg-sky-500 text-white rounded-full text-xs font-bold uppercase tracking-wider">
+                          {selectedPost.category}
+                        </span>
+                        <div className="flex items-center text-slate-200 text-sm font-medium">
+                          <Calendar size={14} className="mr-1" /> {selectedPost.date}
+                        </div>
+                      </div>
+                      <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight drop-shadow-md">
+                        {selectedPost.title}
+                      </h2>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-8">
+                  <div className="flex items-center gap-3 mb-8 pb-8 border-b border-slate-100">
+                    <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-500">
+                      <User size={24} />
+                    </div>
+                    <div>
+                      <div className="font-bold text-slate-900">{selectedPost.author}</div>
+                      <div className="text-sm text-slate-500">Author</div>
+                    </div>
+                  </div>
+                  
+                  <div className="prose prose-slate max-w-none">
+                    <p className="text-lg text-slate-600 mb-8 leading-relaxed font-medium">
+                      {selectedPost.excerpt}
+                    </p>
+                    
+                    <div className="mb-8 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                        <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                           Presentation Video
+                        </h3>
+                        <div className="rounded-xl overflow-hidden bg-black aspect-video shadow-md">
+                        <video 
+                            className="w-full h-full object-contain" 
+                            controls 
+                            autoPlay 
+                            muted
+                        >
+                            <source src="/MicrosoftTeams-video.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                        </div>
+                    </div>
+
+                    <p className="text-slate-600 leading-relaxed mb-4">
+                      When navigating the complexities of career planning and educational choices, it's essential to have a clear understanding of your goals and the paths available to you. The insights shared in the presentation above highlight key strategies for making informed decisions that align with your personal strengths and aspirations.
+                    </p>
+                    <p className="text-slate-600 leading-relaxed">
+                      Remember that education is a journey, not a race. Taking the time to explore different options, seek mentorship, and understand your own learning style can make a significant difference in your long-term success. Stay curious, stay motivated, and never hesitate to ask questions along the way.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
