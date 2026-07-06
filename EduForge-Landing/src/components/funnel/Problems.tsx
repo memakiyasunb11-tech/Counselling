@@ -12,14 +12,14 @@ const Problems: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 px-6 bg-[#FAF8F5]">
+    <section className="py-20 px-6 bg-transparent relative z-10">
       <div className="max-w-3xl mx-auto flex flex-col items-center">
 
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-serif text-3xl md:text-4xl font-bold text-[#2C2825] mb-4 text-center"
+          className="font-serif text-3xl md:text-4xl font-bold text-[#0f2e5a] mb-4 text-center"
         >
           Does This Sound Like You?
         </motion.h2>
@@ -29,7 +29,7 @@ const Problems: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-[#8c7a6b] font-medium mb-12 text-center"
+          className="text-[#475569] font-medium mb-12 text-center"
         >
           If even ONE of these is true, this workshop was made for you.
         </motion.p>
@@ -45,7 +45,7 @@ const Problems: React.FC = () => {
               className="flex items-start gap-4"
             >
               <span className="text-2xl mt-0.5">{problem.emoji}</span>
-              <p className="text-[#2C2825] font-medium text-lg leading-relaxed">{problem.text}</p>
+              <p className="text-[#0f2e5a] font-medium text-lg leading-relaxed">{problem.text}</p>
             </motion.div>
           ))}
         </div>
@@ -54,10 +54,10 @@ const Problems: React.FC = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="w-full max-w-2xl bg-[#F0EBE1] border border-[#E5DCCB] rounded-2xl p-6 text-center shadow-inner"
+          className="w-full max-w-2xl bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl p-6 text-center shadow-inner"
         >
-          <p className="text-[#2C2825] font-serif font-bold text-lg md:text-xl">
-            What if you could <span className="text-[#D9A05B]">fix ALL of this</span> in just one workshop?
+          <p className="text-[#0f2e5a] font-serif font-bold text-lg md:text-xl">
+            What if you could <span className="text-[#ff6b00]">fix ALL of this</span> in just one workshop?
           </p>
         </motion.div>
 

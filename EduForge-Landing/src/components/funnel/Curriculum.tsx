@@ -36,7 +36,7 @@ const Curriculum: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 px-6 bg-[#FAF8F5]">
+    <section className="py-24 px-6 bg-transparent relative z-10">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
 
         <div className="text-center max-w-2xl mb-16">
@@ -44,7 +44,7 @@ const Curriculum: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-serif text-4xl font-bold text-[#2C2825] mb-6"
+            className="font-serif text-4xl font-bold text-[#0f2e5a] mb-6"
           >
             What You'll Learn Inside
           </motion.h2>
@@ -53,7 +53,7 @@ const Curriculum: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-[#6C635B] font-medium"
+            className="text-[#334155] font-medium"
           >
             In two focused hours we unpack the exact system behind a successful career roadmap. Here is a glimpse, the real depth is reserved for those who show up live.
           </motion.p>
@@ -67,13 +67,13 @@ const Curriculum: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 * idx }}
-              className="bg-white rounded-2xl p-8 border border-[#E5DCCB] shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white rounded-2xl p-8 border border-[#e2e8f0] shadow-sm hover:shadow-md transition-shadow"
             >
-              <div className="w-12 h-12 bg-[#F9F6F0] rounded-xl flex items-center justify-center text-2xl mb-6 border border-[#E5DCCB]">
+              <div className="w-12 h-12 bg-[#F9F6F0] rounded-xl flex items-center justify-center text-2xl mb-6 border border-[#e2e8f0]">
                 {mod.icon}
               </div>
-              <h3 className="font-bold text-[#2C2825] text-lg mb-3">{mod.title}</h3>
-              <p className="text-[#8c7a6b] text-sm leading-relaxed">{mod.desc}</p>
+              <h3 className="font-bold text-[#0f2e5a] text-lg mb-3">{mod.title}</h3>
+              <p className="text-[#475569] text-sm leading-relaxed">{mod.desc}</p>
             </motion.div>
           ))}
         </div>

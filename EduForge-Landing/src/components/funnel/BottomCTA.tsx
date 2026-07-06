@@ -30,16 +30,16 @@ const BottomCTA: React.FC = () => {
               <img src={logo} alt="EduForge Logo" className="h-8 object-contain" />
             </div>
             <div className="hidden sm:block">
-              <p className="text-[#EFE8DD] font-medium text-sm">Register, show up, and leave with a plan.</p>
-              <p className="text-[#8c7a6b] text-xs mt-0.5">No pre-work. No complicated onboarding.</p>
+              <p className="text-[#f1f5f9] font-medium text-sm">Register, show up, and leave with a plan.</p>
+              <p className="text-[#475569] text-xs mt-0.5">No pre-work. No complicated onboarding.</p>
             </div>
           </div>
 
           <Link 
             to="/checkout"
-            className="w-full sm:w-auto bg-gradient-to-r from-[#F1C40F] to-[#F39C12] hover:from-[#f3ce3d] hover:to-[#f5ab32] text-[#1A1816] font-bold py-3 px-8 rounded-xl shadow-[0_4px_14px_0_rgba(241,196,15,0.39)] transition-all transform hover:scale-105 active:scale-95 whitespace-nowrap text-center"
+            className="w-full sm:w-auto bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] hover:from-[#ffa333] hover:to-[#ff8533] text-[#1A1816] font-bold py-3 px-8 rounded-xl shadow-[0_4px_14px_0_rgba(241,196,15,0.39)] transition-all transform hover:scale-105 active:scale-95 whitespace-nowrap text-center"
           >
-            REGISTER NOW FOR ₹149/- <span className="line-through text-[#8c7a6b] ml-1 text-xs">₹4,000</span>
+            REGISTER NOW FOR ₹149/- <span className="line-through text-[#475569] ml-1 text-xs">₹4,000</span>
           </Link>
           
         </div>

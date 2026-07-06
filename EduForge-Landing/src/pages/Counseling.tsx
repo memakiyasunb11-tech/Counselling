@@ -1,34 +1,45 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Calendar, Users, Target, BookOpen, Compass, ArrowRight, PlayCircle } from 'lucide-react';
+import { Calendar, Users, Target, BookOpen, Compass, ArrowRight, PlayCircle, Heart, Building2, DollarSign } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 import CounselingExtra from '../components/CounselingExtra';
 
 const services = [
   {
     icon: Compass,
-    title: 'Career Discovery',
+    title: 'Career Counseling',
     description: 'Explore potential career paths mapped to your psychometric profile and innate strengths.',
-    color: 'text-amber-500 bg-amber-100'
-  },
-  {
-    icon: Target,
-    title: 'Goal Setting',
-    description: 'Work with expert counsellors to establish achievable short-term and long-term academic goals.',
-    color: 'text-sky-500 bg-sky-100'
+    color: 'text-amber-500 bg-amber-100',
+    link: '/counseling/career'
   },
   {
     icon: BookOpen,
-    title: 'College Planning',
-    description: 'Get step-by-step guidance on university selection, applications, and entrance exam preparation.',
-    color: 'text-emerald-500 bg-emerald-100'
+    title: 'Academic Counseling',
+    description: 'Overcome academic challenges and achieve excellence with proven strategies.',
+    color: 'text-sky-500 bg-sky-100',
+    link: '/counseling/academic'
   },
   {
-    icon: Users,
-    title: '1-on-1 Mentorship',
-    description: 'Connect with industry professionals who provide real-world insights into your desired field.',
-    color: 'text-rose-500 bg-rose-100'
+    icon: Heart,
+    title: 'Mental Health Counseling',
+    description: 'Nurture your well-being with emotional support and resilience building.',
+    color: 'text-emerald-500 bg-emerald-100',
+    link: '/counseling/mental-health'
+  },
+  {
+    icon: Building2,
+    title: 'Admission Counseling',
+    description: 'Navigate the competitive admissions landscape with confidence.',
+    color: 'text-rose-500 bg-rose-100',
+    link: '/counseling/admission'
+  },
+  {
+    icon: DollarSign,
+    title: 'Scholarship Counseling',
+    description: 'Discover scholarships, grants, and funding opportunities tailored to your profile.',
+    color: 'text-purple-500 bg-purple-100',
+    link: '/counseling/scholarship'
   }
 ];
 
@@ -91,7 +102,9 @@ const Counseling: React.FC = () => {
                 <p className="text-slate-500 leading-relaxed font-medium mb-6">{service.description}</p>
                 
                 <div className="flex items-center text-slate-400 group-hover:text-amber-500 font-bold text-sm transition-colors cursor-pointer w-fit">
-                  Learn more <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                  <Link to={service.link} className="flex items-center">
+                    Learn more <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
               </div>
             </motion.div>

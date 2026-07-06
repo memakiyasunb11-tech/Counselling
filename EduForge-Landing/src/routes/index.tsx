@@ -11,6 +11,12 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Blog from '../pages/Blog';
 import Community from '../pages/Community';
+import Checkout from '../pages/Checkout';
+import CareerCounseling from '../pages/counseling/CareerCounseling';
+import AcademicCounseling from '../pages/counseling/AcademicCounseling';
+import MentalHealthCounseling from '../pages/counseling/MentalHealthCounseling';
+import AdmissionCounseling from '../pages/counseling/AdmissionCounseling';
+import ScholarshipCounseling from '../pages/counseling/ScholarshipCounseling';
 import StudentDashboard from '../pages/dashboards/StudentDashboard';
 import StudentRoadmap from '../pages/dashboards/StudentRoadmap';
 import StudentCounselling from '../pages/dashboards/StudentCounselling';
@@ -60,6 +66,11 @@ const AppRoutes: React.FC = () => {
           <Route path="/features" element={<Features />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/counseling" element={<Counseling />} />
+          <Route path="/counseling/career" element={<CareerCounseling />} />
+          <Route path="/counseling/academic" element={<AcademicCounseling />} />
+          <Route path="/counseling/mental-health" element={<MentalHealthCounseling />} />
+          <Route path="/counseling/admission" element={<AdmissionCounseling />} />
+          <Route path="/counseling/scholarship" element={<ScholarshipCounseling />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -91,6 +102,7 @@ const AppRoutes: React.FC = () => {
 
         {/* Standalone/Fullscreen Routes */}
         <Route path="/session-room" element={<ProtectedRoute><SessionRoom /></ProtectedRoute>} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </>
   );

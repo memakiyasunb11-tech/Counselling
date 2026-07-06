@@ -32,29 +32,29 @@ const FAQ: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 px-6 bg-[#FAF8F5]">
+    <section className="py-24 px-6 bg-transparent relative z-10">
       <div className="max-w-3xl mx-auto">
         
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-serif text-3xl md:text-4xl font-bold text-[#2C2825] mb-12 text-center"
+          className="font-serif text-3xl md:text-4xl font-bold text-[#0f2e5a] mb-12 text-center"
         >
           Frequently Asked Questions
         </motion.h2>
 
         <div className="space-y-4">
           {faqs.map((faq, idx) => (
-            <div key={idx} className="border-b border-[#E5DCCB] last:border-0 pb-2">
+            <div key={idx} className="border-b border-[#e2e8f0] last:border-0 pb-2">
               <button
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
                 className="w-full py-4 flex items-center justify-between text-left group"
               >
-                <span className="font-bold text-[#2C2825] group-hover:text-[#D9A05B] transition-colors pr-8">
+                <span className="font-bold text-[#0f2e5a] group-hover:text-[#ff6b00] transition-colors pr-8">
                   {faq.q}
                 </span>
-                <span className="text-[#D9A05B] font-medium text-xl flex-shrink-0 transition-transform duration-300 transform">
+                <span className="text-[#ff6b00] font-medium text-xl flex-shrink-0 transition-transform duration-300 transform">
                   {openIndex === idx ? '−' : '+'}
                 </span>
               </button>
@@ -68,7 +68,7 @@ const FAQ: React.FC = () => {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <p className="pb-6 text-[#6C635B] leading-relaxed">
+                    <p className="pb-6 text-[#334155] leading-relaxed">
                       {faq.a}
                     </p>
                   </motion.div>

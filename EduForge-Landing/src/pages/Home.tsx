@@ -8,11 +8,14 @@ import Bonuses from '../components/funnel/Bonuses';
 import FAQ from '../components/funnel/FAQ';
 import FinalCTA from '../components/funnel/FinalCTA';
 import BottomCTA from '../components/funnel/BottomCTA';
+import AnimatedBackground from '../components/layout/AnimatedBackground';
 
 const Home: React.FC = () => {
   return (
-    <div className="w-full bg-[#FAF8F5] min-h-screen relative font-sans">
-      <TopBar />
+    <div className="w-full min-h-screen relative font-sans overflow-hidden">
+      <AnimatedBackground />
+      <div className="relative z-10">
+        <TopBar />
       <Hero />
       <Problems />
       <Mentor />
@@ -21,6 +24,7 @@ const Home: React.FC = () => {
       <FAQ />
       <FinalCTA />
       <BottomCTA />
+      </div>
     </div>
   );
 };
