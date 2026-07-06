@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import KeyBenefits from './KeyBenefits';
 
 interface MainLayoutProps {
   children?: React.ReactNode;
@@ -18,6 +19,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       <main className="flex-grow pt-24">
         {children || <Outlet />}
       </main>
+      <KeyBenefits />
       <Footer />
     </div>
   );

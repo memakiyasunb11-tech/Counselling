@@ -9,6 +9,7 @@ import FAQ from '../components/funnel/FAQ';
 import FinalCTA from '../components/funnel/FinalCTA';
 import BottomCTA from '../components/funnel/BottomCTA';
 import AnimatedBackground from '../components/layout/AnimatedBackground';
+import KeyBenefits from '../components/layout/KeyBenefits';
 
 const Home: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const Home: React.FC = () => {
       <Mentor />
       <Curriculum />
       <Bonuses />
+      <KeyBenefits />
       <FAQ />
       <FinalCTA />
       <BottomCTA />
