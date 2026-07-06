@@ -9,7 +9,21 @@ const KeyBenefits: React.FC = () => {
     "Comprehensive College Admission Strategies",
     "Personalized Career Roadmap & Execution Plan",
     "Exclusive Access to Career Playbooks & Resources",
-    "Dedicated Support Community for Continuous Growth"
+    "Dedicated Support Community for Continuous Growth",
+    "1-on-1 Personalized Counseling Sessions",
+    "Resume & Profile Building Workshops",
+    "Strategic Extracurricular Activity Planning",
+    "Scholarship Strategy & Financial Aid Guidance",
+    "Interview Preparation & Mock Interviews",
+    "Standardized Test Preparation Strategy",
+    "Global University Selection & Shortlisting",
+    "Visa & Immigration Application Assistance",
+    "Internships & Summer Program Placements",
+    "Alumni Networking & Industry Connections",
+    "Mental Health & Exam Stress Management",
+    "Time Management & Productivity Workshops",
+    "Real-world Skill Development Tracking",
+    "Post-Admission Orientation & Support"
   ];
 
   return (
