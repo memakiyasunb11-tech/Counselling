@@ -10,7 +10,7 @@ const blogPosts = [
     title: "10 Steps to Choosing the Right College for You",
     excerpt: "Navigating the college selection process can be overwhelming. Here's a comprehensive guide to help you find your perfect fit.",
     category: "College Planning",
-    author: "Dr. Sarah Jenkins",
+    author: "Dr. Anant Shah",
     date: "Aug 15, 2026",
     image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000&auto=format&fit=crop"
   },
@@ -38,9 +38,9 @@ const Blog: React.FC = () => {
   return (
     <div className="min-h-screen pt-32 pb-24 font-sans relative z-10">
       <div className="max-w-7xl mx-auto px-6">
-        
+
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial="hidden"
           animate="visible"
@@ -59,7 +59,7 @@ const Blog: React.FC = () => {
         </motion.div>
 
         {/* Featured Post (First item in array) */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -67,10 +67,10 @@ const Blog: React.FC = () => {
         >
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="h-64 lg:h-auto overflow-hidden">
-              <img 
-                src={blogPosts[0].image} 
+              <img
+                src={blogPosts[0].image}
                 alt={blogPosts[0].title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
             <div className="p-10 lg:p-12 flex flex-col justify-center">
@@ -106,7 +106,7 @@ const Blog: React.FC = () => {
         {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.slice(1).map((post, idx) => (
-            <motion.div 
+            <motion.div
               key={post.id}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -114,10 +114,10 @@ const Blog: React.FC = () => {
               className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:-translate-y-2 transition-all duration-300 group flex flex-col"
             >
               <div className="h-48 overflow-hidden relative">
-                <img 
-                  src={post.image} 
-                  alt={post.title} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-sky-600 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
