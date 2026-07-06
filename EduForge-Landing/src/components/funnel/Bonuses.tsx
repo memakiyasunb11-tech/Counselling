@@ -72,6 +72,20 @@ const Bonuses: React.FC = () => {
       tag: "Interview",
       value: "₹999",
       image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      title: "Extracurriculars That Actually Matter.",
+      subtitle: "The Profile Building Blueprint",
+      tag: "Profile",
+      value: "₹899",
+      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      title: "How to Ask for Letters of Recommendation.",
+      subtitle: "LOR Templates & Strategies",
+      tag: "LOR",
+      value: "₹499",
+      image: "https://images.unsplash.com/photo-1455390582262-044cdead27d8?q=80&w=600&auto=format&fit=crop"
     }
   ];
 
@@ -94,7 +108,7 @@ const Bonuses: React.FC = () => {
           viewport={{ once: true }}
           className="font-serif text-3xl md:text-4xl font-bold text-[#0f2e5a] mb-4 text-center"
         >
-          Plus 10 EduForge Playbooks, Yours FREE
+          Plus 12 EduForge Playbooks, Yours FREE
         </motion.h2>
 
         <motion.p 
@@ -104,7 +118,7 @@ const Bonuses: React.FC = () => {
           transition={{ delay: 0.1 }}
           className="text-[#334155] font-medium text-center max-w-2xl mb-16"
         >
-          10 deep-dive PDF playbooks covering roadmaps, college admissions, mindset, and more. Total value <strong className="text-[#0f2e5a]">₹7,990</strong>, included free when you register before the timer ends.
+          12 deep-dive PDF playbooks covering roadmaps, college admissions, mindset, and more. Total value <strong className="text-[#0f2e5a]">₹9,388</strong>, included free when you register before the timer ends.
         </motion.p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full mb-20">

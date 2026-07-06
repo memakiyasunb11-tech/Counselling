@@ -21,8 +21,9 @@ const Hero: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
+        whileHover={{ scale: 1.05, y: -2 }}
         transition={{ delay: 0.1 }}
-        className="border border-[#ff6b00] rounded-full px-6 py-1.5 mb-10 inline-block bg-white shadow-sm"
+        className="border border-[#ff6b00] rounded-full px-6 py-1.5 mb-10 inline-block bg-white shadow-sm hover:shadow-md hover:bg-orange-50 cursor-pointer transition-colors duration-300"
       >
         <span className="text-[#ff6b00] text-xs font-bold tracking-widest uppercase">
           LIMITED TIME WORKSHOP

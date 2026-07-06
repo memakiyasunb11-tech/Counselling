@@ -28,6 +28,14 @@ const FAQ: React.FC = () => {
     {
       q: "Will I get a certificate?",
       a: "Yes, you will receive a digital Certificate of Participation from EduForge upon completing the workshop."
+    },
+    {
+      q: "Can my parents attend the workshop with me?",
+      a: "Absolutely! We highly encourage parents to sit in on the workshop so they can understand the career mapping process and support your decisions."
+    },
+    {
+      q: "Is this only for high school students?",
+      a: "While high school students get the most benefit from early planning, college students who are confused about their specialization or first job will also find immense value in our frameworks."
     }
   ];
 

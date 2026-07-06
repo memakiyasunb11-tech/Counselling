@@ -32,6 +32,21 @@ const Curriculum: React.FC = () => {
       icon: "🧰",
       title: "The Toolkit That Runs It All",
       desc: "The exact stack that protects your applications, brings opportunities on autopilot, and saves 15+ hours a week."
+    },
+    {
+      icon: "🎯",
+      title: "Mastering the Admission Interview",
+      desc: "Learn the psychology behind what interviewers actually look for and how to present your best self."
+    },
+    {
+      icon: "💸",
+      title: "Scholarship & Financial Aid Secrets",
+      desc: "Uncover hidden funding opportunities that most students miss and reduce your education costs."
+    },
+    {
+      icon: "🌐",
+      title: "Building a Global Network",
+      desc: "How to connect with industry leaders and alumni before you even step foot on campus."
     }
   ];
 

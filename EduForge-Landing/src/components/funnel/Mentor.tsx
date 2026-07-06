@@ -51,6 +51,12 @@ const Mentor: React.FC = () => {
             <p>
               He then founded <strong>EduForge</strong> with a clear mission: to help Indian students navigate the overwhelming maze of career choices without the anxiety of the unknown. Through EduForge, he has worked with <strong>thousands of students</strong>, giving them the exact blueprints to secure admission to their dream universities and build thriving, fulfilling careers.
             </p>
+            <p>
+              His signature <strong>"EduForge Blueprint"</strong> has been featured in top educational seminars and has successfully placed over 485+ students in Ivy League universities and premier Indian institutes like IITs, NITs, and IIMs.
+            </p>
+            <p>
+              Unlike traditional counselors who rely on guesswork, Dr. Shah uses data-driven assessments combined with deep empathy. When he's not mentoring, he is actively conducting corporate workshops to bridge the gap between academic learning and industry expectations.
+            </p>
           </div>
         </motion.div>
 
