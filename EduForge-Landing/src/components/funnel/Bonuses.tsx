@@ -15,7 +15,7 @@ const Bonuses: React.FC = () => {
       subtitle: "College Admission Checklist",
       tag: "Admissions",
       value: "₹999",
-      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=600&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=600&auto=format&fit=crop"
     },
     {
       title: "7 Wrong Mindsets That Keep Students Confused.",
