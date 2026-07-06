@@ -1,7 +1,7 @@
 services:
   eduforge-client:
     build: 
-      context: ./client
+      context: ./EduForge-Landing
       dockerfile: Dockerfile
     container_name: eduforge-client
     ports:
