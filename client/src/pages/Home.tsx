@@ -3,6 +3,13 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Briefcase } from 'lucide-react';
 import { slideInLeft, staggerContainer, fadeInUp, floatAnimation, rotateIn } from '../utils/animations';
+import Features from './Features';
+import Assessments from './Assessments';
+import Pricing from './Pricing';
+import About from './About';
+import Blog from './Blog';
+import Community from './Community';
+import Contact from './Contact';
 
 const Home: React.FC = () => {
   return (
@@ -295,6 +302,15 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Appended Sections for Full Page Experience */}
+      <Features />
+      <Assessments />
+      <Pricing />
+      <About />
+      <Blog />
+      <Community />
+      <Contact />
     </div>
   );
 };
