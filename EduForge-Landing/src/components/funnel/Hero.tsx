@@ -7,18 +7,18 @@ import logo from '../../assets/logo.png';
 const Hero: React.FC = () => {
   return (
     <section className="pt-32 pb-20 px-6 max-w-5xl mx-auto flex flex-col items-center text-center">
-      
+
       {/* Logo */}
-      <motion.img 
+      <motion.img
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        src={logo} 
-        alt="EduForge" 
-        className="h-32 md:h-48 mb-8 object-contain w-auto" 
+        src={logo}
+        alt="EduForge"
+        className="h-32 md:h-48 mb-8 object-contain w-auto"
       />
 
       {/* Limited Time Badge */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.1 }}
@@ -30,18 +30,18 @@ const Hero: React.FC = () => {
       </motion.div>
 
       {/* Main Headline */}
-      <motion.h1 
+      <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
         className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-[#0f2e5a] leading-[1.1] tracking-tight mb-8"
       >
-        Unlock Your True Potential.<br/>
+        Unlock Your True Potential.<br />
         Build Your <span className="text-[#ff6b00] italic">Ultimate Career Roadmap.</span>
       </motion.h1>
 
       {/* Subheading */}
-      <motion.p 
+      <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
       </motion.p>
 
       {/* Event Details Pill */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
@@ -68,22 +68,22 @@ const Hero: React.FC = () => {
       </motion.div>
 
       {/* Stats Row */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
         className="grid grid-cols-3 divide-x divide-[#e2e8f0] border-y border-[#e2e8f0] py-6 mb-12 w-full max-w-2xl"
       >
         <div className="flex flex-col items-center">
-          <span className="text-2xl font-bold text-[#0f2e5a]">10,000+</span>
+          <span className="text-2xl font-bold text-[#0f2e5a]">80,000+</span>
           <span className="text-[10px] text-[#475569] font-bold tracking-widest uppercase mt-1">Students Guided</span>
         </div>
         <div className="flex flex-col items-center">
-          <span className="text-2xl font-bold text-[#0f2e5a]">100+</span>
+          <span className="text-2xl font-bold text-[#0f2e5a]">485+</span>
           <span className="text-[10px] text-[#475569] font-bold tracking-widest uppercase mt-1">Colleges Placed</span>
         </div>
         <div className="flex flex-col items-center">
-          <span className="text-2xl font-bold text-[#0f2e5a]">4.9/5</span>
+          <span className="text-2xl font-bold text-[#0f2e5a]">4.5/5</span>
           <span className="text-[10px] text-[#475569] font-bold tracking-widest uppercase mt-1">Average Rating</span>
         </div>
       </motion.div>
@@ -95,7 +95,7 @@ const Hero: React.FC = () => {
         transition={{ delay: 0.6 }}
         className="w-full max-w-xl"
       >
-        <Link to="/checkout" className="w-full bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] hover:from-[#ffa333] hover:to-[#ff8533] text-[#1A1816] rounded-2xl py-5 px-6 shadow-[0_10px_25px_-5px_rgba(241,196,15,0.4)] transition-all transform hover:scale-[1.02] active:scale-95 flex flex-col items-center justify-center">
+        <Link to="/checkout" className="w-full bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] hover:from-[#ffa333] hover:to-[#ff8533] text-[#1A1816] rounded-2xl py-5 px-6 shadow-[0_10px_25px_-5px_rgba(241,196,15,0.4)] transition-all transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl hover:brightness-110 duration-300 active:scale-95 flex flex-col items-center justify-center">
           <span className="font-extrabold text-lg sm:text-xl md:text-2xl tracking-tight mb-1">
             YES! I Want To Find My True Career Path
           </span>
@@ -106,7 +106,7 @@ const Hero: React.FC = () => {
       </motion.div>
 
       {/* Trust Badges */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.7 }}

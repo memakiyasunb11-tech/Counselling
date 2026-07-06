@@ -34,7 +34,7 @@ const FinalCTA: React.FC = () => {
           transition={{ delay: 0.2 }}
           className="w-full max-w-xl mb-6"
         >
-          <Link to="/checkout" className="w-full bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] hover:from-[#ffa333] hover:to-[#ff8533] text-[#1A1816] rounded-2xl py-6 px-6 shadow-[0_10px_25px_-5px_rgba(241,196,15,0.4)] transition-all transform hover:scale-[1.02] active:scale-95 flex flex-col items-center justify-center">
+          <Link to="/checkout" className="w-full bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] hover:from-[#ffa333] hover:to-[#ff8533] text-[#1A1816] rounded-2xl py-6 px-6 shadow-[0_10px_25px_-5px_rgba(241,196,15,0.4)] transition-all transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl hover:brightness-110 duration-300 active:scale-95 flex flex-col items-center justify-center">
             <span className="font-extrabold text-lg sm:text-xl md:text-2xl tracking-tight mb-1">
               YES! I Want To Find My True Career Path
             </span>

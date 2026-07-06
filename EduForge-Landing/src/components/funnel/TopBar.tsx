@@ -17,7 +17,7 @@ const TopBar: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed top-0 w-full z-50 bg-transparent relative z-10/90 backdrop-blur-md border-b border-[#f8fafc] py-2 flex items-center justify-center gap-4 text-sm font-semibold">
+    <div className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-[#f8fafc] py-2 flex items-center justify-center gap-4 text-sm font-semibold">
       <div className="flex items-center gap-2 text-[#475569]">
         <span>🔥</span>
         <span>OFFER EXPIRES IN</span>
