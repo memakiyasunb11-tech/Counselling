@@ -38,7 +38,7 @@ const Checkout: React.FC = () => {
   if (isSuccess) {
     return (
       <div className="min-h-screen bg-[#F9FAFB] flex flex-col items-center justify-center p-6">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center"
@@ -60,7 +60,7 @@ const Checkout: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#F9FAFB] text-slate-800 py-12 px-4 sm:px-6">
-      
+
       {/* Header */}
       <div className="max-w-4xl mx-auto text-center mb-10">
         <h1 className="text-2xl font-bold text-slate-800">Career Clarity Workshop</h1>
@@ -68,10 +68,10 @@ const Checkout: React.FC = () => {
       </div>
 
       <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8">
-        
+
         {/* Left Column */}
         <div className="md:col-span-7 space-y-6">
-          
+
           {/* Payment Details */}
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -109,28 +109,28 @@ const Checkout: React.FC = () => {
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
             <h2 className="font-bold text-lg mb-1">Your details</h2>
             <p className="text-slate-500 text-sm mb-6">Required for each payment on this link.</p>
-            
+
             <form id="checkout-form" onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1">Name <span className="text-red-500">*</span></label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   required
                   placeholder="Your full name"
                   value={formData.name}
-                  onChange={e => setFormData({...formData, name: e.target.value})}
+                  onChange={e => setFormData({ ...formData, name: e.target.value })}
                   className="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-shadow"
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1">Email <span className="text-red-500">*</span></label>
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   required
                   placeholder="you@example.com"
                   value={formData.email}
-                  onChange={e => setFormData({...formData, email: e.target.value})}
+                  onChange={e => setFormData({ ...formData, email: e.target.value })}
                   className="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-shadow"
                 />
               </div>
@@ -141,12 +141,12 @@ const Checkout: React.FC = () => {
                   <span className="inline-flex items-center px-4 rounded-l-lg border border-r-0 border-slate-300 bg-slate-50 text-slate-500 sm:text-sm">
                     IN +91
                   </span>
-                  <input 
-                    type="tel" 
+                  <input
+                    type="tel"
                     required
                     placeholder="Phone number"
                     value={formData.phone}
-                    onChange={e => setFormData({...formData, phone: e.target.value})}
+                    onChange={e => setFormData({ ...formData, phone: e.target.value })}
                     className="flex-1 min-w-0 block w-full px-4 py-2.5 rounded-none rounded-r-lg border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-shadow"
                   />
                 </div>
@@ -160,13 +160,13 @@ const Checkout: React.FC = () => {
         <div className="md:col-span-5">
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sticky top-6">
             <h2 className="font-bold mb-6">Payment Summary</h2>
-            
+
             <div className="flex justify-between items-center mb-6 pb-6 border-b border-slate-100">
               <span className="text-slate-600 font-medium">Amount</span>
               <span className="font-bold">₹149.00</span>
             </div>
 
-            <button 
+            <button
               type="submit"
               form="checkout-form"
               disabled={isSubmitting}
@@ -200,7 +200,7 @@ const Checkout: React.FC = () => {
                 <Mail size={14} /> info@eduforge.in
               </div>
               <div className="flex items-center gap-2">
-                <Phone size={14} /> +91 81800 04661
+                <Phone size={14} /> +91 12345 67891
               </div>
             </div>
           </div>
