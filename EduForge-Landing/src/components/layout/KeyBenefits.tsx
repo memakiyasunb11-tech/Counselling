@@ -4,7 +4,7 @@ import { CheckCircle2 } from 'lucide-react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase';
 
-const defaultPoints = [
+export const defaultPoints = [
     "Expert Mentorship from Industry Leaders",
     "AI-Powered Career & Psychometric Assessments",
     "Comprehensive College Admission Strategies",

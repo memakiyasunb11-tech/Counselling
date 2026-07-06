@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase';
 
-const defaultBonuses = [
+export const defaultBonuses = [
     {
       title: "4 Ways to Map Your Career.",
       subtitle: "The 4 Pillars of Career Mapping",

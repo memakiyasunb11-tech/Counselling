@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase';
 
-const defaultModules = [
+export const defaultModules = [
     {
       icon: "🧠",
       title: "7 Myths Quietly Ruining Your Career",

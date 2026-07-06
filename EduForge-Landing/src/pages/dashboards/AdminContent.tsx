@@ -3,6 +3,11 @@ import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from 'firebase
 import { db } from '../../firebase';
 import { Plus, Edit2, Trash2, X, Check, FileText } from 'lucide-react';
 
+import { defaultFaqs } from '../../components/funnel/FAQ';
+import { defaultBonuses } from '../../components/funnel/Bonuses';
+import { defaultModules } from '../../components/funnel/Curriculum';
+import { defaultPoints } from '../../components/layout/KeyBenefits';
+
 type TabType = 'faqs' | 'bonuses' | 'curriculum' | 'benefits';
 
 const AdminContent: React.FC = () => {
@@ -73,6 +78,26 @@ const AdminContent: React.FC = () => {
     } catch (err) {
       console.error("Failed to delete", err);
     }
+  };
+
+  const handleSeedData = async () => {
+    if (!window.confirm(`Are you sure you want to load the default ${activeTab}? This will add multiple entries to your database.`)) return;
+    
+    setLoading(true);
+    try {
+      let itemsToSeed: any[] = [];
+      if (activeTab === 'faqs') itemsToSeed = defaultFaqs;
+      if (activeTab === 'bonuses') itemsToSeed = defaultBonuses;
+      if (activeTab === 'curriculum') itemsToSeed = defaultModules;
+      if (activeTab === 'benefits') itemsToSeed = defaultPoints.map(text => ({ text }));
+
+      const promises = itemsToSeed.map(item => addDoc(collection(db, collectionsMap[activeTab]), item));
+      await Promise.all(promises);
+      await fetchData();
+    } catch (err) {
+      console.error("Failed to seed data", err);
+    }
+    setLoading(false);
   };
 
   const renderFormFields = () => {
@@ -147,7 +172,7 @@ const AdminContent: React.FC = () => {
   };
 
   const renderTableRows = () => {
-    return data.map((item, i) => (
+    return data.map((item) => (
       <tr key={item.id} className="border-b border-slate-100 hover:bg-slate-50">
         <td className="p-4 text-sm text-slate-900 font-medium">
           {activeTab === 'faqs' && item.q}
@@ -177,9 +202,16 @@ const AdminContent: React.FC = () => {
           </h1>
           <p className="text-slate-500 mt-2">Manage landing page content directly.</p>
         </div>
-        <button onClick={() => handleOpenModal()} className="bg-[#0f2e5a] text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-[#0a1e3b] transition-colors">
-          <Plus size={18} /> Add New {activeTab.slice(0, -1)}
-        </button>
+        <div className="flex gap-2">
+          {data.length === 0 && (
+            <button onClick={handleSeedData} className="bg-emerald-500 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-emerald-600 transition-colors">
+              Load Default Data
+            </button>
+          )}
+          <button onClick={() => handleOpenModal()} className="bg-[#0f2e5a] text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-[#0a1e3b] transition-colors">
+            <Plus size={18} /> Add New {activeTab.slice(0, -1)}
+          </button>
+        </div>
       </div>
 
       <div className="flex gap-2 mb-6 bg-slate-100 p-1 rounded-xl w-max">
