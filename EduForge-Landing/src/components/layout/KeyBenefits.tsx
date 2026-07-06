@@ -21,10 +21,10 @@ const KeyBenefits: React.FC = () => {
             Everything you need to gain clarity, build your roadmap, and secure your dream career.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {points.map((point, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}

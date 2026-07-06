@@ -17,15 +17,15 @@ const Home: React.FC = () => {
       <AnimatedBackground />
       <div className="relative z-10">
         <TopBar />
-      <Hero />
-      <Problems />
-      <Mentor />
-      <Curriculum />
-      <Bonuses />
-      <KeyBenefits />
-      <FAQ />
-      <FinalCTA />
-      <BottomCTA />
+        <Hero />
+        <Problems />
+        <Mentor />
+        <Curriculum />
+        <Bonuses />
+        <KeyBenefits />
+        <FAQ />
+        <FinalCTA />
+        <BottomCTA />
       </div>
     </div>
   );
