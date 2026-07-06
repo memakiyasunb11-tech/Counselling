@@ -7,60 +7,66 @@ const AnimatedBackground: React.FC = () => {
 
   if (!mounted) return null;
 
+  // Configuration for the floating shapes (Confetti style but unique)
+  const shapes = Array.from({ length: 60 }).map((_, i) => {
+    const size = Math.random() * 10 + 4; // 4px to 14px
+    const type = Math.random() > 0.5 ? 'rect' : 'circle';
+    
+    // EduForge brand colors: Navy, Orange, light Orange, and subtle grays
+    const colors = ['#0f2e5a', '#ff6b00', '#ff8c00', '#94a3b8', '#cbd5e1'];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    
+    return {
+      id: i,
+      x: Math.random() * 100, // percentage
+      y: Math.random() * 100, // percentage
+      size,
+      type,
+      color,
+      duration: Math.random() * 25 + 20,
+      delay: Math.random() * -40,
+      rotation: Math.random() * 360,
+    };
+  });
+
   return (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-[#ffffff]">
-      {/* Soft gradient base */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-slate-50 to-[#f8fafc]"></div>
+      {/* Background Gradient */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-50 via-white to-slate-100 opacity-90"></div>
       
-      {/* Animated Glowing Orbs */}
-      <motion.div
-        className="absolute w-[800px] h-[800px] rounded-full blur-[120px] opacity-[0.15]"
-        style={{ background: 'radial-gradient(circle, #ff6b00 0%, transparent 70%)', top: '-10%', left: '-10%' }}
-        animate={{
-          x: [0, 200, -100, 0],
-          y: [0, 100, 300, 0],
-          scale: [1, 1.2, 0.9, 1],
-        }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      
-      <motion.div
-        className="absolute w-[700px] h-[700px] rounded-full blur-[120px] opacity-[0.1]"
-        style={{ background: 'radial-gradient(circle, #0f2e5a 0%, transparent 70%)', top: '20%', right: '-10%' }}
-        animate={{
-          x: [0, -200, 100, 0],
-          y: [0, -100, 200, 0],
-          scale: [0.8, 1.2, 1, 0.8],
-        }}
-        transition={{
-          duration: 30,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      
-      <motion.div
-        className="absolute w-[600px] h-[600px] rounded-full blur-[100px] opacity-[0.1]"
-        style={{ background: 'radial-gradient(circle, #ff8c00 0%, transparent 70%)', bottom: '-20%', left: '20%' }}
-        animate={{
-          x: [0, 300, -200, 0],
-          y: [0, -200, 100, 0],
-          scale: [1, 0.8, 1.1, 1],
-        }}
-        transition={{
-          duration: 22,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      
-      {/* Noise overlay for texture */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
-      <div className="absolute inset-0 bg-white/20 backdrop-blur-[1px]"></div>
+      {/* Floating Shapes */}
+      {shapes.map((shape) => {
+        const isRect = shape.type === 'rect';
+        
+        const shapeStyle: React.CSSProperties = {
+          width: shape.size * (isRect ? (Math.random() * 1.5 + 1.5) : 1), // rectangles are slightly wider
+          height: shape.size,
+          backgroundColor: shape.color,
+          position: 'absolute',
+          top: `${shape.y}%`,
+          left: `${shape.x}%`,
+          opacity: Math.random() * 0.4 + 0.3,
+          borderRadius: isRect ? '2px' : '50%',
+        };
+
+        return (
+          <motion.div
+            key={shape.id}
+            style={shapeStyle}
+            animate={{
+              y: [0, -200, 0],
+              x: [0, Math.random() * 80 - 40, 0],
+              rotate: [shape.rotation, shape.rotation + 360, shape.rotation],
+            }}
+            transition={{
+              duration: shape.duration,
+              repeat: Infinity,
+              ease: "linear",
+              delay: shape.delay,
+            }}
+          />
+        );
+      })}
     </div>
   );
 };

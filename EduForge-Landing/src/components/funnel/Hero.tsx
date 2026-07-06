@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         src={logo} 
         alt="EduForge" 
-        className="h-24 md:h-32 mb-8 object-contain" 
+        className="h-32 md:h-48 mb-8 object-contain w-auto" 
       />
 
       {/* Limited Time Badge */}
