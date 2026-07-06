@@ -60,8 +60,8 @@ const AppRoutes: React.FC = () => {
     <>
       <Routes>
         {/* Public Website Routes */}
+        <Route path="/" element={<Home />} />
         <Route element={<MainLayout />}>
-          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/features" element={<Features />} />
           <Route path="/pricing" element={<Pricing />} />
