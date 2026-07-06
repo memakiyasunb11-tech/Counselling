@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, CheckCircle2, Star, Target, Compass, BookOpen, Users, Globe, Briefcase, Award, MessageSquare } from 'lucide-react';
+import { ChevronDown, Star, Target, Compass, BookOpen, Globe, Briefcase, Award, MessageSquare } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 
 const CounselingExtra: React.FC = () => {

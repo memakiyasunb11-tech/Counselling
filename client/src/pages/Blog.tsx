@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+
 import { ArrowRight, Calendar, User, X } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 
