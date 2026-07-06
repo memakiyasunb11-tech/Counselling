@@ -1,55 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Briefcase } from 'lucide-react';
 import { slideInLeft, staggerContainer, fadeInUp, floatAnimation, rotateIn } from '../utils/animations';
 
 const Home: React.FC = () => {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
-  const y2 = useTransform(scrollY, [0, 1000], [0, -100]);
-
   return (
     <div className="w-full">
       {/* Hero Section */}
       <section className="relative min-h-[100vh] flex items-center pt-32 pb-16 overflow-hidden">
-        {/* Advanced Background Constructive Elements - Light Theme */}
-        <div className="absolute inset-0 z-0">
+          {/* Advanced Background Constructive Elements - Light Theme */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
-          <motion.div style={{ y: y1 }} className="absolute top-0 right-0 w-[600px] h-[600px] bg-sky-200/40 rounded-full blur-[120px] mix-blend-multiply"></motion.div>
-          <motion.div style={{ y: y2 }} className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-200/40 rounded-full blur-[100px] mix-blend-multiply"></motion.div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-rose-100/30 rounded-full blur-[150px]"></div>
           
-          {/* Floating Particles - Light Theme */}
-          {mounted && [...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              className={`absolute rounded-full ${i % 2 === 0 ? 'bg-amber-400' : 'bg-sky-400'}`}
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                width: `${Math.random() * 4 + 4}px`,
-                height: `${Math.random() * 4 + 4}px`,
-              }}
-              animate={{
-                y: [0, Math.random() * -60 - 20, 0],
-                x: [0, Math.random() * 40 - 20, 0],
-                scale: [1, Math.random() * 1.5 + 1, 1],
-                opacity: [0.2, 0.8, 0.2],
-              }}
-              transition={{
-                duration: 4 + Math.random() * 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: Math.random() * 3,
-              }}
-            />
-          ))}
-        </div>
-
         <motion.div 
           className="container mx-auto px-6 lg:px-12 relative z-10"
           initial={{ opacity: 0, y: 40 }}
@@ -258,6 +220,78 @@ const Home: React.FC = () => {
                 <div className="text-sm text-slate-500 font-bold uppercase tracking-wider">{stat.label}</div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Media Section - Video & Photos */}
+      <section className="py-20 bg-slate-50 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="text-center mb-16">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6"
+            >
+              See the Impact
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-lg text-slate-500 max-w-2xl mx-auto"
+            >
+              Discover how our counseling sessions are shaping futures. Watch our introduction video and explore moments from our success stories.
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Video Placeholder */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-200 group"
+            >
+              {/* Replace the src with actual counseling video embed URL */}
+              <iframe 
+                className="absolute inset-0 w-full h-full object-cover"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1&mute=0" 
+                title="Counseling Video" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+              ></iframe>
+              <div className="absolute inset-0 bg-slate-900/10 pointer-events-none group-hover:bg-slate-900/0 transition-colors duration-300"></div>
+            </motion.div>
+
+            {/* Photo Gallery Grid */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+              className="grid grid-cols-2 gap-4"
+            >
+              {[
+                "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1000&auto=format&fit=crop"
+              ].map((src, i) => (
+                <motion.div 
+                  key={i}
+                  variants={fadeInUp}
+                  className={`rounded-2xl overflow-hidden shadow-md border-2 border-white relative group ${i === 0 || i === 3 ? 'aspect-[4/5]' : 'aspect-square'}`}
+                >
+                  <img src={src} alt={`Counseling Session ${i + 1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>

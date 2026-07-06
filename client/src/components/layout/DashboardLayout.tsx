@@ -55,7 +55,7 @@ const DashboardLayout: React.FC = () => {
   const config = roleConfigs[role];
 
   return (
-    <div className="min-h-screen bg-slate-50 flex font-sans">
+    <div className="min-h-screen bg-transparent flex font-sans">
 
       {/* Sidebar - Desktop */}
       <aside className="hidden lg:flex flex-col w-64 bg-white border-r border-slate-200 fixed h-full z-20">

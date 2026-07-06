@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Calendar, Users, Target, BookOpen, Compass, ArrowRight } from 'lucide-react';
+import { Calendar, Users, Target, BookOpen, Compass, ArrowRight, PlayCircle } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 
 const services = [
@@ -33,8 +33,8 @@ const services = [
 
 const Counseling: React.FC = () => {
   return (
-    <div className="min-h-screen pt-32 pb-24 bg-transparent font-sans">
-      <div className="max-w-7xl mx-auto px-6">
+    <div className="min-h-screen pt-32 pb-24 bg-transparent font-sans relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Hero Section */}
         <motion.div 
@@ -95,6 +95,50 @@ const Counseling: React.FC = () => {
               </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Media Gallery Section */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="mb-24"
+        >
+          <div className="text-center mb-12">
+            <motion.h2 variants={fadeInUp} className="text-4xl font-extrabold text-slate-900 mb-4">
+              Real Stories, Real Results
+            </motion.h2>
+            <motion.p variants={fadeInUp} className="text-lg text-slate-500 max-w-2xl mx-auto">
+              A glimpse into our counseling environment and the students we've helped achieve their goals.
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <motion.div variants={fadeInUp} className="md:col-span-2 relative aspect-video rounded-3xl overflow-hidden shadow-xl group">
+              <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1000&auto=format&fit=crop" alt="Counseling Video" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-slate-900/30 flex items-center justify-center transition-colors duration-300 group-hover:bg-slate-900/40">
+                <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white cursor-pointer hover:scale-110 hover:bg-white/30 transition-all">
+                  <PlayCircle size={40} className="fill-white text-slate-900" />
+                </div>
+              </div>
+            </motion.div>
+            
+            <div className="flex flex-col gap-6">
+              <motion.div variants={fadeInUp} className="relative flex-1 rounded-3xl overflow-hidden shadow-lg group">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1000&auto=format&fit=crop" alt="Counseling Team" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <span className="text-white font-bold">Expert Mentors</span>
+                </div>
+              </motion.div>
+              <motion.div variants={fadeInUp} className="relative flex-1 rounded-3xl overflow-hidden shadow-lg group">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1000&auto=format&fit=crop" alt="Student Planning" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <span className="text-white font-bold">Career Planning</span>
+                </div>
+              </motion.div>
+            </div>
+          </div>
         </motion.div>
 
         {/* How It Works */}

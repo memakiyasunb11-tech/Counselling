@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AppRoutes from './routes';
 import SplashScreen from './components/layout/SplashScreen';
+import AnimatedBackground from './components/layout/AnimatedBackground';
 import { useAuthStore, type UserRole } from './store/authStore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
@@ -45,7 +46,8 @@ const App: React.FC = () => {
   return (
     <>
       {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
-      <div className={`transition-opacity duration-700 ${showSplash ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`transition-opacity duration-700 relative min-h-screen ${showSplash ? 'opacity-0' : 'opacity-100'}`}>
+        <AnimatedBackground />
         <Router>
           <AppRoutes />
         </Router>
