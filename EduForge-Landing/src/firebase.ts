@@ -1,0 +1,29 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBrc6X0-3Fa_bKnHhl7f1sEoe7FNd8mi-k",
+  authDomain: "recruitmatrix-d8284.firebaseapp.com",
+  projectId: "recruitmatrix-d8284",
+  storageBucket: "recruitmatrix-d8284.firebasestorage.app",
+  messagingSenderId: "463226509250",
+  appId: "1:463226509250:web:eb60f8032d46d96f8be85b",
+  measurementId: "G-40REZK82Z9"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+let analytics = null;
+if (typeof window !== 'undefined') {
+  analytics = getAnalytics(app);
+}
+
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+export { app, analytics, auth, db };
